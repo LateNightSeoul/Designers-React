@@ -10,7 +10,7 @@ export const addStoreTime = (open_hour, close_hour) => ({
 
 const initialState = [
     {
-        open_hour: 9,
+        open_hour: 10,
         close_hour: 22
     }
 ]

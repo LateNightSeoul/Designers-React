@@ -10,10 +10,6 @@ function App() {
   const scheduler = useSelector(state => state.scheduler[0]);
   const storeInfo = useSelector(state => state.storeInfo[0]);
 
-  // console.log(state);
-  console.log(scheduler);
-  console.log(storeInfo);
-
   return (
     <table className="tables">
       <SchedulerHeader/>

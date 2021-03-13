@@ -88,8 +88,7 @@ function MainComponent({ hour }) {
 }
 
 function SchedulerMain({ open_hour, close_hour }) {
-
-    console.log(open_hour, close_hour, "hi");
+    
     const store_time = () => {
         let store_times = [];
         let hour = open_hour;
@@ -101,7 +100,6 @@ function SchedulerMain({ open_hour, close_hour }) {
     }
 
     const store_times = store_time();
-
 
     return (
         store_times.map((hour, i) => {
