@@ -1,17 +1,17 @@
 const ADD_STORETIME = 'storeInfo/ADD_STORETIME';
 
-export const addStoreTime = (open_time, close_time) => ({
+export const addStoreTime = (open_hour, close_hour) => ({
     type: ADD_STORETIME,
     storeTime: {
-        open_time,
-        close_time
+        open_hour,
+        close_hour
     }
 });
 
 const initialState = [
     {
-        open_time: '09:00',
-        close_time: '22:00'
+        open_hour: 9,
+        close_hour: 22
     }
 ]
 

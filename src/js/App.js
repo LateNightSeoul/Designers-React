@@ -3,180 +3,23 @@ import { useSelector } from 'react-redux';
 import '../css/App.css';
 import '../js/View/SchedulerHeader';
 import SchedulerHeader from '../js/View/SchedulerHeader';
-import '../js/View/SchedulerMain';
+import SchedulerMain from '../js/View/SchedulerMain';
 
 function App() {
 
-  // const date = new Date();
+  const scheduler = useSelector(state => state.scheduler[0]);
+  const storeInfo = useSelector(state => state.storeInfo[0]);
 
-  const scheduler = useSelector(state => state.scheduler);
+  // console.log(state);
+  console.log(scheduler);
+  console.log(storeInfo);
 
   return (
     <table className="tables">
       <SchedulerHeader/>
-
-      <tr>
-        <td rowSpan={6}>
-          9시
-        </td>
-        <td>
-          00분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          10분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          20분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          30분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          40분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          50분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td rowSpan={6}>
-          9시
-        </td>
-        <td>
-          00분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          10분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          20분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          30분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          40분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          50분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
+      <SchedulerMain 
+        open_hour={storeInfo.open_hour} 
+        close_hour={storeInfo.close_hour}/>
     </table>
   );
 }

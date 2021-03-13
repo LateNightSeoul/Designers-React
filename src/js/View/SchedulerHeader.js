@@ -34,19 +34,14 @@ function SchedulerHeader( {} ) {
         let dates = [];
         const dateObj = new Date();
         for(let i = 0; i < 7; i++) {
-            dateObj.setDate(dateObj.getDate() + 1);
             dates.push(dateObj.getDate());
+            dateObj.setDate(dateObj.getDate() + 1);
         }
         return dates;
     }
 
     const days = getDays();
     const dates = getDates();
-
-    // const dates = getDate(dateObj);
-    // const printHeaderComponent = days.map(
-    //     (day, idx) => (<HeaderComponent key={idx} date={dates[idx]} day={day}/>)
-    // )
     
     return (
         <tr>
