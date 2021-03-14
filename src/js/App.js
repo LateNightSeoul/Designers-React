@@ -9,6 +9,9 @@ function App() {
 
   const scheduler = useSelector(state => state.scheduler[0]);
   const storeInfo = useSelector(state => state.storeInfo[0]);
+  const date = useSelector(state => state.date[0]);
+
+  console.log(date);
 
   return (
     <table className="tables">

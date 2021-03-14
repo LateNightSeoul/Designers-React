@@ -1,10 +1,31 @@
 import React from 'react';
 
-function MainComponent({ hour }) {
+// function MainComponent( { hour }) {
+
+//   const minutes = ['00분', '10분', '20분', '30분', '40분', '50분'];
+
+//   return (
+    
+//     <tr >
+//       <td className={}>
+//         10분
+//       </td>
+//       <td className={}></td>
+//       <td className={}></td>
+//       <td className={}></td>
+//       <td className={}></td>
+//       <td className={}></td>
+//       <td className={}></td>
+//       <td className={}></td>
+//   </tr>
+//   )
+// }
+
+function MainContents({ hour }) {
     return (
         <React.Fragment>
-        <tr>
-        <td rowSpan={6}>
+      <tr>
+        <td rowSpan={6} className={hour+'hour'}>
           {hour}시
         </td>
         <td>
@@ -103,7 +124,7 @@ function SchedulerMain({ open_hour, close_hour }) {
 
     return (
         store_times.map((hour, i) => {
-            return <MainComponent hour={hour}/>
+            return <MainContents hour={hour}/>
         })
     )
 }
