@@ -22,8 +22,9 @@ function MainContents({ hour }) {
   const minutes = ['10분', '20분', '30분', '40분', '50분'];
 
     return (
-        <React.Fragment>
-      <tr>
+    
+      <React.Fragment>
+      {/* <tr> */}
         <td rowSpan={6} className={hour+'hour'}>
           {hour}시
         </td>
@@ -37,7 +38,7 @@ function MainContents({ hour }) {
         <td></td>
         <td></td>
         <td></td>
-      </tr>
+      {/* </tr> */}
 
       {minutes.map((minute, i) => {
         return <MainComponent minute={minute}/>
