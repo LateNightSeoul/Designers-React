@@ -18,9 +18,15 @@ const initialState = [
     {
         id: 1,
         member_name: '이해석',
-        treatment_type: '펌',
-        start_time: '2021-03-14 13:00',
-        end_time: '2021-03-14 14:00',
+        treatment_type: 'perm',
+        start_time: '2021-03-17 13:00',
+        end_time: '2021-03-17 14:00',
+    }, {
+        id: 2,
+        memeber_name: '최준혁',
+        treatment_type: 'cut',
+        start_time: '2021-03-18 14:00',
+        end_time: '2021-03-18 15:00'
     }
 ]
 

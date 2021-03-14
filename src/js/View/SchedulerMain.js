@@ -1,11 +1,30 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-function MainComponent( { minute }) {
+// function GridComponent( {} ) {
+//   return 
+// }
+
+function FirstMainComponent({ hour }) {
   return (
-    <tr >
-      <td>
-        {minute}
-      </td>
+    <tr>
+        <td rowSpan={6}>{hour}시</td>
+        <td>00분</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+  )
+}
+
+function LeastMainComponent({ minute }) {
+    return (
+      <tr >
+      <td>{minute}</td>
       <td></td>
       <td></td>
       <td></td>
@@ -14,34 +33,25 @@ function MainComponent( { minute }) {
       <td></td>
       <td></td>
   </tr>
-  )
+    )
+}
+
+function MainComponent( { hour, minute }) {
+  if(minute === '00분') {
+    return <FirstMainComponent hour={hour}/>
+  } else {
+    return <LeastMainComponent minute={minute}/>
+  }
 }
 
 function MainContents({ hour }) {
-
-  const minutes = ['10분', '20분', '30분', '40분', '50분'];
+  
+    const date = useSelector(state => state.date);
 
     return (
-    
       <React.Fragment>
-      {/* <tr> */}
-        <td rowSpan={6} className={hour+'hour'}>
-          {hour}시
-        </td>
-        <td>
-          00분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      {/* </tr> */}
-
-      {minutes.map((minute, i) => {
-        return <MainComponent minute={minute}/>
+      {date[0].minutes.map((minute, i) => {
+        return <MainComponent key={i} minute={minute} hour={hour}/>
       })}
       </React.Fragment>
     )
@@ -67,5 +77,6 @@ function SchedulerMain({ open_hour, close_hour }) {
         })
     )
 }
+
 
 export default SchedulerMain;

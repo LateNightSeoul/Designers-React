@@ -2,8 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import '../css/App.css';
 import '../js/View/SchedulerHeader';
-import SchedulerHeader from '../js/View/SchedulerHeader';
-import SchedulerMain from '../js/View/SchedulerMain';
+import SchedulerContainer from './View/SchedulerContainer';
 
 function App() {
 
@@ -12,12 +11,7 @@ function App() {
   const date = useSelector(state => state.date[0]);
 
   return (
-    <table className="tables">
-      <SchedulerHeader/>
-      <SchedulerMain 
-        open_hour={storeInfo.open_hour} 
-        close_hour={storeInfo.close_hour}/>
-    </table>
+    <SchedulerContainer/>
   );
 }
 
