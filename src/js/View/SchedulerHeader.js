@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector, shallowEqual } from 'react-redux';
 
 function HeaderComponent( { date, day } ) {
     return (
@@ -10,39 +11,12 @@ function HeaderComponent( { date, day } ) {
 }
 
 function SchedulerHeader( {} ) {
-    const dateObj = new Date();
-    const days_of_week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
 
-    const date = {
-        year: dateObj.getFullYear(),
-        month: dateObj.getMonth(),
-        date: dateObj.getDate(),
-        day: dateObj.getDay()
-    }
+    const { days, dates } = useSelector(state => ({
+        days: state.date[0].days,
+        dates: state.date[0].dates
+    }), shallowEqual);
 
-    function getDays() {
-        let days = [];
-        let idx = date.day;
-        for (let i = 0; i < 7; i++) {
-            days.push(days_of_week[idx % 7]);
-            idx++;
-        }
-        return days
-    }
-
-    function getDates() {
-        let dates = [];
-        const dateObj = new Date();
-        for(let i = 0; i < 7; i++) {
-            dates.push(dateObj.getDate());
-            dateObj.setDate(dateObj.getDate() + 1);
-        }
-        return dates;
-    }
-
-    const days = getDays();
-    const dates = getDates();
-    
     return (
         <tr>
         <td>

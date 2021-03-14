@@ -11,8 +11,6 @@ function App() {
   const storeInfo = useSelector(state => state.storeInfo[0]);
   const date = useSelector(state => state.date[0]);
 
-  console.log(date);
-
   return (
     <table className="tables">
       <SchedulerHeader/>

@@ -1,27 +1,26 @@
 import React from 'react';
 
-// function MainComponent( { hour }) {
-
-//   const minutes = ['00분', '10분', '20분', '30분', '40분', '50분'];
-
-//   return (
-    
-//     <tr >
-//       <td className={}>
-//         10분
-//       </td>
-//       <td className={}></td>
-//       <td className={}></td>
-//       <td className={}></td>
-//       <td className={}></td>
-//       <td className={}></td>
-//       <td className={}></td>
-//       <td className={}></td>
-//   </tr>
-//   )
-// }
+function MainComponent( { minute }) {
+  return (
+    <tr >
+      <td>
+        {minute}
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+  </tr>
+  )
+}
 
 function MainContents({ hour }) {
+
+  const minutes = ['10분', '20분', '30분', '40분', '50분'];
+
     return (
         <React.Fragment>
       <tr>
@@ -40,70 +39,9 @@ function MainContents({ hour }) {
         <td></td>
       </tr>
 
-      <tr>
-        <td>
-          10분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          20분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          30분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          40분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-
-      <tr>
-        <td>
-          50분
-        </td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
+      {minutes.map((minute, i) => {
+        return <MainComponent minute={minute}/>
+      })}
       </React.Fragment>
     )
 }
