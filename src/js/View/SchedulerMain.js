@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { getSchedule, shiftSchedule } from '../../modules/loadingSchedule';
 import Schedule from '../Component/schedule';
 
 function GridComponentWithoutSchedule() {
@@ -13,38 +14,54 @@ function GridComponentWithSchedule({ member_name, treatment_type }) {
 }
 
 function FirstMainComponent({ hour, minute }) {
-  const scheduler = useSelector(state => state.scheduler);
+  // const scheduler = useSelector(state => state.scheduler);
   const date = useSelector(state => state.date);
   const dispatch = useDispatch();
+  const loadingSchedule = useSelector(state => state.schedules);
+
+  console.log(loadingSchedule[0]);
+
+  const getSchedule = (hour, minute) => dispatch(getSchedule(hour, minute));
+  const shiftSchedule = () => dispatch(shiftSchedule());
   
-  const deleteSchedule = id => dispatch(deleteSchedule(id));
+  // const deleteSchedule = id => dispatch(deleteSchedule(id));
 
-  function getSchedules() {
-    let schedules = [];
-    scheduler.map((schedule, i) => {
-      if(hour === parseInt(schedule.start_hour) && minute === (schedule.start_minute + '분')) {
-        schedules.push({
-          treatment_type: schedule.treatment_type, 
-          member_name: schedule.member_name,
-          treatment_date: parseInt(schedule.treatment_date)
-        });
-      }
-    })
-    return schedules;
-  }
+  // function getSchedules() {
+  //   let schedules = [];
+  //   scheduler.map((schedule, i) => {
+  //     if(hour === parseInt(schedule.start_hour) && minute === (schedule.start_minute + '분')) {
+  //       schedules.push({
+  //         treatment_type: schedule.treatment_type, 
+  //         member_name: schedule.member_name,
+  //         treatment_date: parseInt(schedule.treatment_date)
+  //       });
+  //     }
+  //   })
+  //   return schedules;
+  // }
 
-  const schedules = getSchedules();
+  // const schedules = getSchedules();
 
-  if(schedules.length > 0) {
+  if(loadingSchedule.length > 0) {
     return (
       <React.Fragment>
       <tr>
           <td rowSpan={6}>{hour}시</td> 
           <td>00분</td>
-          {date[0].dates.map((date, i) => {  
+          {/* {date[0].dates.map((date, i) => {  
             if(schedules.length > 0 && date === schedules[0].treatment_date) {
-              const schedule = schedules.shift(0);
+              const schedule = schedules.shift();
               return <GridComponentWithSchedule key={i} member_name={schedule.member_name} treatment_type={schedule.treatment_type} />
+            } else {
+              return <GridComponentWithoutSchedule key={i}/>
+            }
+          })} */}
+          {date[0].dates.map((data, i) => {
+            if(loadingSchedule.length > 0 && date === loadingSchedule[0].treatment_date) {
+              shiftSchedule();
+              return <GridComponentWithSchedule key={i} 
+                member_name={loadingSchedule.member_name} 
+                treatment_type={loadingSchedule.treatment_type} />
             } else {
               return <GridComponentWithoutSchedule key={i}/>
             }
