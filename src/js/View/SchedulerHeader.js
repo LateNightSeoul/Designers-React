@@ -18,6 +18,7 @@ function SchedulerHeader( {} ) {
     }), shallowEqual);
 
     return (
+    <thead>
         <tr>
         <td>
           <div>시</div>
@@ -30,6 +31,7 @@ function SchedulerHeader( {} ) {
         {days.map((day, idx) => (
             <HeaderComponent key={idx} date={dates[idx]} day={day}/>))}
       </tr>
+      </thead>
     )
 }
 
