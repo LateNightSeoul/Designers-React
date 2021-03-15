@@ -1,16 +1,18 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../css/schedule.css';
+import getScheduleHeight from '../../util/getScheduleHeight';
 import getSchedules from '../../util/getSchedules';
 
 function GridComponentWithoutSchedule() {
   return ( <td></td> )
 }
 
-function GridComponentWithSchedule({ member_name, treatment_type }) {
+function GridComponentWithSchedule({ member_name, treatment_type, scheduleHeight }) {
+  console.log(scheduleHeight);
   return (
     <td>    
-      <div className={'schedule'}>
+      <div className={'schedule'} style={{height:scheduleHeight}}>
         <div>
           <div>{treatment_type}</div>
           <div>{member_name}</div>
@@ -30,30 +32,31 @@ function FirstMainComponent({ hour, minute }) {
 
   if(schedules.length > 0) {
     return (
-      <React.Fragment>
       <tr>
           <td rowSpan={6}>{hour}시</td> 
           <td>00분</td>
           {date[0].dates.map((date, i) => {  
             if(schedules.length > 0 && date === schedules[0].treatment_date) {
               const schedule = schedules.shift(0);
-              return <GridComponentWithSchedule key={i} member_name={schedule.member_name} treatment_type={schedule.treatment_type} />
+              const scheduleHeight = getScheduleHeight(schedule.start_hour, schedule.end_hour, 
+                                                          schedule.start_minute, schedule.end_minute);
+              return <GridComponentWithSchedule key={i} 
+                member_name={schedule.member_name} 
+                treatment_type={schedule.treatment_type} 
+                scheduleHeight={scheduleHeight}/>
             } else {
               return <GridComponentWithoutSchedule key={i}/>
             }
           })}
       </tr>
-      </React.Fragment>
       )
   } else {
     return (
-      <React.Fragment>
       <tr>
         <td rowSpan={6}>{hour}시</td>
         <td>00분</td>
         {date[0].dates.map((date, i) => (<GridComponentWithoutSchedule key={i}/>))}
       </tr>
-      </React.Fragment>
       )
   }
 }
@@ -85,13 +88,6 @@ function LeastMainComponent({ hour, minute }) {
       {date[0].dates.map((date, i) => (<GridComponentWithoutSchedule key={i}/>))}
   </tr>)
   }
-    
-  return (
-  <tr >
-      <td>{minute}</td>
-      {}
-  </tr>
-    )
 }
 
 function MainComponents( { hour, minute }) {
