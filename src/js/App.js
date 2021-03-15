@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import '../css/App.css';
-import '../js/View/SchedulerHeader';
-import SchedulerContainer from './View/SchedulerContainer';
+import './Component/SchedulerHeader';
+import SchedulerContainer from './Component/SchedulerContainer';
 
 function App() {
 

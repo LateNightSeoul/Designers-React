@@ -46,6 +46,15 @@ const initialState = [
         start_minute: '00',
         end_minute: '00',
         treatment_date: 19
+    }, {
+        id: 4,
+        member_name: '이동민',
+        treatment_type: 'perm',
+        start_hour: '14',
+        end_hour: '16',
+        start_minute: '30',
+        end_minute: '30',
+        treatment_date: 20
     }
 ]
 

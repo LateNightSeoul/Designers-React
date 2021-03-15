@@ -1,6 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Schedule from '../Component/schedule';
+import '../../css/schedule.css';
+import getSchedules from '../../util/getSchedules';
 
 function GridComponentWithoutSchedule() {
   return ( <td></td> )
@@ -8,32 +9,24 @@ function GridComponentWithoutSchedule() {
 
 function GridComponentWithSchedule({ member_name, treatment_type }) {
   return (
-    <td><Schedule member_name={member_name} treatment_type={treatment_type}/></td>
+    <td>    
+      <div className={'schedule'}>
+        <div>
+          <div>{treatment_type}</div>
+          <div>{member_name}</div>
+        </div>
+      </div>
+  </td>
   )
 }
 
 function FirstMainComponent({ hour, minute }) {
   const scheduler = useSelector(state => state.scheduler);
   const date = useSelector(state => state.date);
-  const dispatch = useDispatch();
-  
-  const deleteSchedule = id => dispatch(deleteSchedule(id));
+  let schedule_state = [];
+  schedule_state = schedule_state.concat(scheduler);
 
-  function getSchedules() {
-    let schedules = [];
-    scheduler.map((schedule, i) => {
-      if(hour === parseInt(schedule.start_hour) && minute === (schedule.start_minute + '분')) {
-        schedules.push({
-          treatment_type: schedule.treatment_type, 
-          member_name: schedule.member_name,
-          treatment_date: parseInt(schedule.treatment_date)
-        });
-      }
-    })
-    return schedules;
-  }
-
-  const schedules = getSchedules();
+  const schedules = getSchedules(hour, minute, schedule_state);
 
   if(schedules.length > 0) {
     return (
@@ -66,17 +59,37 @@ function FirstMainComponent({ hour, minute }) {
 }
 
 function LeastMainComponent({ hour, minute }) {
+
+  const scheduler = useSelector(state => state.scheduler);
+  const date = useSelector(state => state.date);
+  let schedule_state = [];
+  schedule_state = schedule_state.concat(scheduler);
+
+  const schedules = getSchedules(hour, minute, schedule_state);
+
+  if(schedules.length > 0) {
+  return (<tr >
+      <td>{minute}</td>
+      {date[0].dates.map((date, i) => {  
+            if(schedules.length > 0 && date === schedules[0].treatment_date) {
+              const schedule = schedules.shift(0);
+              return <GridComponentWithSchedule key={i} member_name={schedule.member_name} treatment_type={schedule.treatment_type} />
+            } else {
+              return <GridComponentWithoutSchedule key={i}/>
+            }
+          })}
+  </tr>)
+  } else {
+  return (  <tr >
+      <td>{minute}</td>
+      {date[0].dates.map((date, i) => (<GridComponentWithoutSchedule key={i}/>))}
+  </tr>)
+  }
     
   return (
   <tr >
       <td>{minute}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      {}
   </tr>
     )
 }
@@ -131,4 +144,4 @@ function SchedulerMain({ open_hour, close_hour }) {
 }
 
 
-export default SchedulerMain;
+export default SchedulerMain; 

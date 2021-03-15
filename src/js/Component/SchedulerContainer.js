@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import Schedule from '../Component/schedule';
 import SchedulerHeader from './SchedulerHeader';
 import SchedulerMain from './SchedulerMain';
 
