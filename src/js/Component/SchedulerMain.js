@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import '../../css/schedule.css';
 import getScheduleHeight from '../../util/getScheduleHeight';
 import getSchedules from '../../util/getSchedules';
@@ -65,7 +65,7 @@ function MainContents({ hour }) {
     )
 }
 
-function SchedulerMain({ }) {
+function SchedulerMain() {
 
   const storeInfo = useSelector(state => state.storeInfo);
   const open_hour = storeInfo[0].open_hour;

@@ -10,7 +10,7 @@ function HeaderComponent( { date, day } ) {
     )
 }
 
-function SchedulerHeader( {} ) {
+function SchedulerHeader() {
 
     const { days, dates } = useSelector(state => ({
         days: state.date[0].days,

@@ -1,6 +1,3 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
-
 function getSchedules(hour, minute, scheduler) {
     let schedules = [];
     scheduler.map((schedule, i) => {
