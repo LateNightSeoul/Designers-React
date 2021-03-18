@@ -1,0 +1,12 @@
+.signup-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto auto;
+    border: 1px salmon solid;
+}
+
+.signup-container div {
+    text-align: center;
+}

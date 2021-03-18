@@ -7,14 +7,17 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from './modules';
 import Login from './js/Component/Login';
+import { BrowserRouter } from 'react-router-dom';
 
 const store = createStore(rootReducer);
 
 ReactDOM.render(
   <React.StrictMode>
+    <BrowserRouter>
     <Provider store={store}>
-    <Login />
+      <App />
     </Provider>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
