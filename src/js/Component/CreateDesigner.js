@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import '../../css/createDesigner.css';
 
 function Option({ number }) {
@@ -18,10 +18,6 @@ function ChooseNumber({ getDesignerNumber }) {
 
     const numbers = getNumbers();
 
-    const onChange = (e) => {
-        getDesignerNumber(e.target.value);
-    }
-
     return(
         <div className={'chooseNumber-container'}>
             <select name={'designer-numbers'} onChange={getDesignerNumber}>
@@ -31,10 +27,11 @@ function ChooseNumber({ getDesignerNumber }) {
     )
 }
 
-function DesignerForm({ designerNumber }) {
+function DesignerForm({}) {
+    // todo : 이름, 연락처, 성별
+}
 
-    console.log(designerNumber);
-
+function DesignerForms({ designerNumber }) {
     const getDesignerNumber = () => {
         let numbers = [];
         for(let i = 0; i < designerNumber; i++) {
@@ -51,27 +48,22 @@ function DesignerForm({ designerNumber }) {
 }
 
 function CreateDesigner() {
-
     const [designerNumber, setDesignerNumber] = useState(0);
 
     const getDesignerNumber = (e) => {
         setDesignerNumber(e.target.value);
     }
     
-    console.log(designerNumber);
-
     return(
         <div className={'createDesigner-container'}>
             <div>
                 <ChooseNumber getDesignerNumber={getDesignerNumber}/>
             </div>
-            <div>
-                <DesignerForm designerNumber={designerNumber}/>            
-            </div>
             <hr/>
-            
+            <div>
+                <DesignerForms designerNumber={designerNumber}/>            
+            </div>
         </div>
-        
     )
 }
 

@@ -8,7 +8,7 @@ import CreateDesigner from './Component/CreateDesigner';
 
 function App() {
   return (
-    <CreateDesigner/>
+    <CreateStore/>
   );
 }
 
