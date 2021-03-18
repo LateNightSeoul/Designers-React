@@ -4,10 +4,10 @@ function getScheduleHeight(start_hour, end_hour, start_minute, end_minute) {
     if(minute < 0) {
         hour -= 1;
         minute = Math.abs(minute) + hour*60;
-        return String(minute * 10) + '%';
+        return String(minute * 10 + (minute / 10) * 3) + '%';
     }
     minute = minute + hour*60;
-    return String(minute * 10) + '%';
+    return String(minute * 10 + (minute / 10) * 3) + '%';
 }
 
 export default getScheduleHeight;

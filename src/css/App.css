@@ -6,17 +6,17 @@
   color: rgb(194, 68, 18);
   border: 1px solid black;
   border-color: black;
-  width: 100%;
+  width: 75%;
   min-width: 800px;
   align-items: center;
   border-collapse: collapse;
-  margin : auto auto;
+  
 }
 
 td {
   border: 1px solid black;
   text-align: center;
   width : 9999px;
-  height: 10px;
+  height: 5px;
   position: relative;
 }
