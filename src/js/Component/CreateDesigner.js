@@ -28,7 +28,15 @@ function ChooseNumber({ getDesignerNumber }) {
 }
 
 function DesignerForm({}) {
-    // todo : 이름, 연락처, 성별
+    return (
+        <div className="designer-container">
+            <div>
+                <input type={Text} placeholder={'이름'}/>
+                <input type={Text} placeholder={'성별'}/>
+                <input type={Text} placeholder={'연락처'}/>
+            </div>
+        </div>
+    )
 }
 
 function DesignerForms({ designerNumber }) {
@@ -43,7 +51,7 @@ function DesignerForms({ designerNumber }) {
     const numbers = getDesignerNumber();
 
     return(
-        numbers.map((number, i) => (<div key={i}>디자이너{i+1}</div>))
+        numbers.map((number, i) => (<DesignerForm key={i}/>))
     )
 }
 
