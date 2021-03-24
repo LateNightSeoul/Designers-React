@@ -4,17 +4,12 @@ import '../../css/login.css';
 function Login() {
     return (
         <div className={'login-container'}>
-            <div className={'login-logo'}>
-                <div>Login</div>
+            <div className={'input-box'}>
+                <input type={Text}/>
+                <input type={Text}/>
             </div>
-
-            <div className={'input-container'}>
-                <input type={Text} id={'login-id'} placeholder={'ID'}/>
-                <input type={Text} id={'login-password'} placeholder={'PASSWORD'}/>
-            </div>
-            <div className={'button-container'}>
-                <div>Button</div>
-                <div>Button</div>
+            <div className={'button-box'}>
+                <div>버튼</div>
             </div>
         </div>
     )
