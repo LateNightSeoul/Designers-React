@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../css/createStore.css';
+import './css/createStore.css';
 
 function CreateStore() {
     return (
@@ -10,6 +10,7 @@ function CreateStore() {
                 <input type={Text} placeholder={'주소'} />
                 <input type={Text} placeholder={'가게 설명'} />
                 <input type={Text} placeholder={'운영시간 설정'} />
+                <input type={Text} placeholder={'전화번호'} />
             </div>
             <div>다음</div>
         </div>

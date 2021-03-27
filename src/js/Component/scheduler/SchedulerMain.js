@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import '../../css/schedule.css';
-import getScheduleHeight from '../../util/getScheduleHeight';
-import getSchedules from '../../util/getSchedules';
+import './css/schedule.css';
+import getScheduleHeight from '../../../util/getScheduleHeight';
+import getSchedules from '../../../util/getSchedules';
 
 function GridComponentWithoutSchedule() {
   return ( <td></td> )

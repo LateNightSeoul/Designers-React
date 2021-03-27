@@ -1,14 +1,14 @@
 import React from 'react';
 import '../css/App.css';
-import './Component/SchedulerHeader';
-import SchedulerContainer from './Component/SchedulerContainer';
-import SignUp from './Component/SignUp';
-import CreateStore from './Component/CreateStore';
-import CreateDesigner from './Component/CreateDesigner';
+import CreateTreatment from './Component/createStore/CreateTreatment';
+import ReservationContainer from './Component/reservation/Reservation';
+import ReservationTable from './Component/reservation/ReservationTable';
+import SchedulerContainer from './Component/scheduler/SchedulerContainer';
+import Reservation from './Component/reservation/Reservation';
 
 function App() {
   return (
-    <CreateDesigner/>
+    <Reservation/>
   );
 }
 

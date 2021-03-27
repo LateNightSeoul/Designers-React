@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../../css/createDesigner.css';
+import './css/createDesigner.css';
 
 function Option({ number }) {
     return (

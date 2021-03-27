@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducer from './modules';
-import Login from './js/Component/Login';
 import { BrowserRouter } from 'react-router-dom';
 
 const store = createStore(rootReducer);
