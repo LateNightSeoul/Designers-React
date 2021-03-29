@@ -57,13 +57,13 @@ const Styles = styled.div`
 function Table({ columns, data }) {
     const defaultColumn = React.useMemo(
         () => ({
-          minWidth: 30,
-          width: 150,
-          maxWidth: 400,
+          minWidth: 50,
+          width: 90,
+          maxWidth: 300,
         }),
         []
       )
-    
+
       const {
         getTableProps,
         getTableBodyProps,
@@ -140,12 +140,28 @@ function ReservationContainer(){
                 accessor: 'id',
               },
               {
-                Header: 'name',
+                Header: '시술',
+                accessor: 'treatment',
+              },
+              {
+                Header: '이름',
                 accessor: 'name',
               },
               {
-                Header: 'treatment',
-                accessor: 'treatment',
+                Header: '날짜',
+                accessor: 'date',
+              },
+              {
+                Header: '시간',
+                accessor: 'time',
+              },
+              {
+                Header: '디자이너',
+                accessor: 'designer',
+              },
+              {
+                Header: 'button',
+                accessor: 'button',
               },
             ],
           },
@@ -157,7 +173,14 @@ function ReservationContainer(){
         {
             id: 1,
             name: '이해석',
-            treatment: '펌'
+            treatment: '펌',
+            date: '2021-03-29',
+            time: '14:00-16:00',
+            designer: '하이',
+            button: <div>
+              <button>승인</button>
+              <button>취소</button>
+            </div>,
         },
         {
             id: 2,

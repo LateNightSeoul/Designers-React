@@ -1,3 +1,8 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .schedule{
     border: 1px solid red;
     background-color: blue;
@@ -11,3 +16,26 @@
     justify-content: center;
     align-items: center;
 }
+
+.App {
+    text-align: center;
+  }
+  
+.tables {
+    color: rgb(194, 68, 18);
+    border: 1px solid black;
+    border-color: black;
+    width: 60%;
+    min-width: 800px;
+    align-items: center;
+    border-collapse: collapse;
+}
+
+td {
+    border: 1px solid black;
+    text-align: center;
+    width : 9999px;
+    height: 5px;
+    position: relative;
+}
+
