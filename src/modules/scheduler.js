@@ -27,7 +27,7 @@ const initialState = [
         end_hour: '16',
         start_minute: '00',
         end_minute: '00',
-        treatment_date: 27
+        treatment_date: 30
     }, {
         id: 2,
         member_name: '최준혁',
@@ -36,7 +36,7 @@ const initialState = [
         end_hour: '17',
         start_minute: '00',
         end_minute: '00',
-        treatment_date: 28
+        treatment_date: 31
     }, {
         id: 3,
         member_name: '이종영',
@@ -45,7 +45,7 @@ const initialState = [
         end_hour: '15',
         start_minute: '00',
         end_minute: '00',
-        treatment_date: 29
+        treatment_date: 1
     }, {
         id: 4,
         member_name: '이동민',
@@ -54,7 +54,7 @@ const initialState = [
         end_hour: '16',
         start_minute: '30',
         end_minute: '30',
-        treatment_date: 21
+        treatment_date: 2
     }
 ]
 
