@@ -1,6 +1,6 @@
 const dateObj = new Date();
 const days_of_week = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'];
-const minutes = ['00분', '10분', '20분', '30분', '40분', '50분'];
+const minutes = ['00분', '30분'];
 
 function getDays() {
     let days = [];

@@ -31,7 +31,7 @@ function MainComponent( { hour, minute }) {
 
   return (
     <tr>
-    {(minute === '00분') ? <td rowSpan={6}>{hour}시</td> : null}
+    {(minute === '00분') ? <td rowSpan={2}>{hour}시</td> : null}
     <td>{minute}</td>
     {date[0].dates.map((date, i) => {  
       if(schedules.length > 0 && date === schedules[0].treatment_date) {
