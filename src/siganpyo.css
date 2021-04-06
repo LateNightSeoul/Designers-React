@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td{
+    display: table-cell;
+}
+
+div{
+    display: block;
+    border: 1px solid saddlebrown;
+}
+
+.lee {
+    z-index: 10;
+    background-color: red;
+    width: 100%;
+    top: 80px;
+    height: 80px;
+    position: absolute;
+    overflow: hidden;
+    box-sizing: border-box;
+
+}
+
+.cols {
+    width: 100px;
+    position: absolute;
+}
+
+.grid {
+    width: 100px;
+    height: 40px;
+    box-sizing: border-box;
+}
