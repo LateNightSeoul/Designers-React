@@ -13,7 +13,6 @@ function Login() {
             ...loginInfo,
             id: e.target.value
         })
-        console.log(loginInfo)
     }
 
     const handlePassword = e => {
@@ -25,6 +24,11 @@ function Login() {
 
     const handleSubmit = e => {
         e.preventDefault();
+
+        if(!loginInfo.id || !loginInfo.password) {
+            alert("ID 또는 비밀번호를 입력하세요.");
+            return
+        } 
 
         const login_info = {
             method: "POST",
@@ -55,6 +59,7 @@ function Login() {
                 type={Text} 
                 id={'login-password'} 
                 placeholder={'PASSWORD'}
+                type='password'
                 onChange={handlePassword}/>
 
 
