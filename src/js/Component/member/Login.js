@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './css/login.css';
+import axios from 'axios';
 
 function Login() {
 
@@ -8,14 +9,14 @@ function Login() {
         password: "",
     })
 
-    const handleId = e => {
+    const onChangeId = e => {
         setLoginInfo({
             ...loginInfo,
             id: e.target.value
         })
     }
 
-    const handlePassword = e => {
+    const onChangePassword = e => {
         setLoginInfo({
             ...loginInfo,
             password: e.target.value
@@ -30,17 +31,11 @@ function Login() {
             return
         } 
 
-        const login_info = {
-            method: "POST",
-            body: JSON.stringify(loginInfo),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }
-        fetch("http://localhost:8080/login", login_info)
-        .then(res => res.json())
-        .then(response => console.log('Success:', JSON.stringify(response)))
-        .catch(error => console.error('Error:', error));
+        const url = 'http://localhost:8080/login';
+
+        axios.post(url, loginInfo)  
+        .then((res) => { console.log(res.data) })
+        .catch((res) => { console.log('id 혹은 비밀번호를 확인하세요.');})
     }
 
     return (
@@ -54,13 +49,13 @@ function Login() {
                 type={Text} 
                 id={'login-id'} 
                 placeholder={'ID'}
-                onChange={handleId}/>
+                onChange={onChangeId}/>
             <input 
                 type={Text} 
                 id={'login-password'} 
                 placeholder={'PASSWORD'}
                 type='password'
-                onChange={handlePassword}/>
+                onChange={onChangePassword}/>
 
 
             <button type='submit'>로그인</button>
