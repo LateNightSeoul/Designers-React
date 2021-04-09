@@ -8,7 +8,7 @@ export const addSchedule = (member_name, treatment_type, start_time, end_time) =
         id: nextId++,
         member_name,
         treatment_type,
-        start_time,
+        start_time, 
         end_time
     }
 });
