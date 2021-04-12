@@ -33,7 +33,7 @@ function SignUp() {
     }
 
     const checkPassword = () => {
-        if (signupInfo.password != signupInfo.password_confirm) {
+        if (signupInfo.password !== signupInfo.password_confirm) {
             alert("비밀번호가 일치하지 않습니다.");
             return false
         }

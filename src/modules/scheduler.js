@@ -22,12 +22,15 @@ const initialState = [
     {
         id: 1,
         member_name: '이해석',
-        treatment_type: 'perm',
-        start_hour: '14',
-        end_hour: '16',
-        start_minute: '00',
-        end_minute: '00',
-        treatment_date: 30
+        treatment_name: 'perm',
+        treatment_date: '2021-04-13 14:00',
+        point: 50,
+        latest_memo: '머릿결이 많이 상함',
+        latest_image: null,
+        required_time: 90,
+        blanktime_start: 30,
+        blanktime_end: 60,
+        price: 15000,
     }, {
         id: 2,
         member_name: '최준혁',
