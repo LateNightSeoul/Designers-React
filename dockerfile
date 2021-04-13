@@ -5,6 +5,7 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 COPY package.json /app/package.json
+RUN npm install axios@0.21.1
 RUN npm install 
 # RUN npm install react-scripts@4.0.3 -g
 # RUN npm install react-table@7.6.3
