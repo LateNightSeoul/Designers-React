@@ -11,13 +11,13 @@ function TreatmentInfo() {
 
 function MainImage({ img_url }) {
     return(
-        <img src={require('../member/designer-photo.jpg')}/>
+        <img src={img_url} width='200' height='300'/>
     )
 }
 
 function SubImage({ img_url }) {
     return(
-        <img src={require('../member/designer-photo.jpg')}/>
+        <img src={img_url} width='200' height='300'/>
     )
 }
 
@@ -25,15 +25,15 @@ function ImageSlider() {
     const [img, setImg] = useState([
         {
             id: 0,
-            img_url: '../member/designer-photo.jpg',            
+            img_url: 'https://i.picsum.photos/id/682/200/300.jpg?hmac=z-Zlq9KVG3pNsE5Jo6A7vqnh-B910bdMztU5AZKQV-o',            
         },
         {
             id: 1,
-            img_url: '../member/designer-photo.jpg',   
+            img_url: 'https://i.picsum.photos/id/101/200/300.jpg?hmac=xUDvORQTxaML0fp9wnx4y6LIHvc7M-tNcOJz8rDLRXo',   
         },
         {
             id: 2,
-            img_url: '../member/designer-photo.jpg',   
+            img_url: 'https://i.picsum.photos/id/696/200/300.jpg?hmac=Ukxvga_1GYxgfAqzwDhBPfVta6-hJKUhayVlI1yMIdk',   
         }
     ])
 
@@ -71,6 +71,7 @@ function ImageSlider() {
                     return <MainImage img_url={image.img_url}/>
                 }
             })}
+            <hr></hr>
             {img.map((image, i) => <SubImage key={i} img_url={image.img_url}/>)}
             <button onClick={onClickLeft}>left</button>
             <button onClick={onClickRight}>right</button>
