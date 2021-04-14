@@ -1,12 +1,45 @@
 import React, { useState } from 'react';
-
+import ReactHtmlParser from 'react-html-parser';
 
 function Description() {
-    return 
+    const [mockData, setMockData] = useState({
+        content: '<div>ㅎㅇ요</div><br/> <div>❤❤</div>'
+    })
+
+    return(
+        <div>
+            <div>설명</div>
+            {ReactHtmlParser(mockData.content)}
+        </div>
+    )
 }
 
 function TreatmentInfo() {
+    const [mockData, setMockData] = useState([
+        {
+            name: '애즈펌',
+            price: 60000,
+        },
+        {
+            name: '남성컷',
+            price: 17000,
+        },
+        {
+            name: '볼륨펌',
+            price: 39000
+        }
+    ])
 
+    return(
+        <ul>
+            {mockData.map((data, i) => (
+                <li>
+                    <div>{data.name}</div>
+                    <div>{data.price}원</div>
+                </li>
+            ))}
+        </ul>
+    )
 }
 
 function MainImage({ img_url }) {
@@ -77,8 +110,6 @@ function ImageSlider() {
             <button onClick={onClickRight}>right</button>
         </div>
     )
-
-
 }
 
 function DesignerInfo({ designer_name, address, designer_store, like_count }) {
@@ -108,6 +139,10 @@ function ViewDesigner() {
             <DesignerInfo></DesignerInfo>
             <hr></hr>
             <ImageSlider></ImageSlider>
+            <hr></hr>
+            <TreatmentInfo></TreatmentInfo>
+            <hr></hr>
+            <Description></Description>
         </React.Fragment>
     )
 }
