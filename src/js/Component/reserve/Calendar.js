@@ -1,7 +1,51 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
 function DateComponent({ first_date, last_date }) {
+
+    const mockData = [
+        {
+            date: 18, // 18일은 꽉 차있는 스케줄로써 달력 클릭 불가하도록 설정할 것
+            schedule : [
+                {
+                    start_time: '12:00',
+                    end_time: '14:00',
+                    blank_time_start: '13:00',
+                    blank_time_end: '13:30'
+                },
+                {
+                    start_time: '13:00',
+                    end_time: '13:30',
+                    blank_time_start: '',
+                    blank_time_end: ''
+                },
+                {
+                    start_time: '14:00',
+                    end_time: '20:00',
+                    blank_time_start: '',
+                    blank_time_end: ''
+                },
+            ]
+        },
+        {
+            date: 21,
+            schedule : [
+                {
+                    start_time: '12:00',
+                    end_time: '14:00',
+                    blank_time_start: '13:00',
+                    blank_time_end: '13:30'
+                }
+            ]
+        }
+    ]
+
+    const [calendar, setCalendar] = useState({});
+
+    const isAvailable = () => {
+        
+    }
+
     const getCalendarData = () => {
         let calnedar_data = [];
         const last_date_of_full_calendar = 42;
@@ -31,6 +75,7 @@ function DateComponent({ first_date, last_date }) {
 
 function Calendar() {
     const days_of_week = useSelector(state => state.date)[0].days_of_week;
+    
     let today = new Date();
     const [date, setDate] = useState({
         today: new Date(),
@@ -59,7 +104,10 @@ function Calendar() {
     return(
         <div>
             <div>달력</div>
-            <div>{date.today.getFullYear()}</div>
+            <div>
+                <span>{date.today.getFullYear()}년</span>
+                <span>{date.today.getMonth()}월</span>
+            </div>
             <table>
                 <tr>
                     {days_of_week.map((day, i) => (<td>{day}</td>))}
