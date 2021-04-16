@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Calendar from './Calendar';
 
 function TreatmentSelector() {
     const [treatmentType, setTreatmentType] = useState('');
@@ -91,6 +92,7 @@ function Reservating() {
         <div>
             <div>예약하기</div>
             <TreatmentSelector></TreatmentSelector>
+            <Calendar></Calendar>
         </div>
     )
 }
