@@ -3,9 +3,9 @@ version: "3"
 services:
   frontend:
     container_name: react-docker
-    build: ./mini-project
+    build: ./
     volumes:
-      - "./mini-project:/app"
+      - ".:/app"
       - '/app/node_modules'
     ports:
       - "3001:3000"
