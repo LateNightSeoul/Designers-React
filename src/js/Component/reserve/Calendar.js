@@ -123,8 +123,6 @@ function Calendar() {
         last_date: new Date(today.getFullYear(), today.getMonth() + 1, 0)
     })
 
-    const [selectedDate, setSelectedDate] = useState(0);
-
     const onClickNext = () => {
         let next_date = new Date(date.today.getFullYear(), date.today.getMonth() + 1);
         setDate({
