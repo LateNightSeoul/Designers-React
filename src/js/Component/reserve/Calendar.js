@@ -16,7 +16,7 @@ function DateComponent({calendar_data, row, column, mockData, today, selectedDat
         }
 
         for (let i = 0; i < mockData.length; i++) {
-            if(mockData[i].date == date && mockData[i].available === false) {
+            if(mockData[i].date == date_today && mockData[i].available === false) {
                 return false
             }
         }
@@ -114,7 +114,7 @@ function MainComponent({ today, date }) {
 
 function Calendar() {
     const days_of_week = useSelector(state => state.date)[0].days_of_week;
-    
+
     let today = new Date();
 
     const [date, setDate] = useState({
