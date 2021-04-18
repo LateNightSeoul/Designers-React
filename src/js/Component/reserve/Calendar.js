@@ -21,7 +21,6 @@ function DateComponent({calendar_data, row, column, mockData, today, selectedDat
             }
         }
         return true
-
     }
 
     const isSelected = () => {
@@ -117,6 +116,7 @@ function Calendar() {
     const days_of_week = useSelector(state => state.date)[0].days_of_week;
     
     let today = new Date();
+
     const [date, setDate] = useState({
         today: new Date(),
         first_date: new Date(today.getFullYear(), today.getMonth(), 1),
