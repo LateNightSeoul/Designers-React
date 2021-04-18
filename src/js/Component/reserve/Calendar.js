@@ -11,20 +11,17 @@ function DateComponent({calendar_data, row, column, mockData, today, selectedDat
             return false
         } else if(date.today.getMonth() < today.getMonth()) {
             return false
-        } else if(date.today.getMonth() > today.getMonth()) {
-            return true
-        }
-
-        if(date_today >= today.getDate()) {
-            for (let i = 0; i < mockData.length; i++) {
-                if(mockData[i].date == date && mockData[i].available === false) {
-                    return false
-                }
-            }
-            return true
-        } else {
+        } else if(date.today.getMonth() === today.getMonth() && date_today < today.getDate()) {
             return false
         }
+
+        for (let i = 0; i < mockData.length; i++) {
+            if(mockData[i].date == date && mockData[i].available === false) {
+                return false
+            }
+        }
+        return true
+
     }
 
     const isSelected = () => {
