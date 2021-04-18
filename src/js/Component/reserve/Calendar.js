@@ -2,12 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import './calendar.css';
 
-function DateComponent({calendar_data, row, column, mockData, today, selectedDate, setSelectedDate }) {
+function DateComponent({calendar_data, row, column, mockData, today, selectedDate, setSelectedDate, date }) {
 
-    const date = calendar_data[row * 7 + column];
+    const date_today = calendar_data[row * 7 + column];
 
-    const isAvailable = (date) => {
-        if(date >= today.getDate()) {
+    const isAvailable = (date_today) => {
+        if(date.today.getFullYear() < today.getFullYear()) {
+            return false
+        } else if(date.today.getMonth() < today.getMonth()) {
+            return false
+        } else if(date.today.getMonth() > today.getMonth()) {
+            return true
+        }
+
+        if(date_today >= today.getDate()) {
             for (let i = 0; i < mockData.length; i++) {
                 if(mockData[i].date == date && mockData[i].available === false) {
                     return false
@@ -20,7 +28,7 @@ function DateComponent({calendar_data, row, column, mockData, today, selectedDat
     }
 
     const isSelected = () => {
-        if(isAvailable(date) === false) {
+        if(isAvailable(date_today) === false) {
             return false
         }
         if(row == selectedDate.row && column == selectedDate.column){
@@ -31,26 +39,23 @@ function DateComponent({calendar_data, row, column, mockData, today, selectedDat
 
     const handleClick = (e) => {
         e.preventDefault();
-        if(isAvailable(date) === false) {
+        if(isAvailable(date_today) === false) {
             return
         }
         setSelectedDate({row : row, column : column});
-        console.log(selectedDate);
     }
 
     return (
-        <td className={[(isAvailable(date) === true && 'is-active'),
+        <td className={[(isAvailable(date_today) === true && 'is-active'),
                         (isSelected() === true && 'is-selected')].join(' ')}
             onClick={handleClick}>
-                {date === 0 ? '' : date}
+                {date_today === 0 ? '' : date_today}
         </td>
     )
 }
 
-function RowComponent({ calendar_data, row, mockData, today, setSelectedDate, selectedDate }) {
+function RowComponent({ calendar_data, row, mockData, today, setSelectedDate, selectedDate, date }) {
     const column_numbers = [0,1,2,3,4,5,6];
-
-    console.log(calendar_data);
 
     return (
         <tr>{column_numbers.map((column, i) => (<DateComponent 
@@ -60,11 +65,12 @@ function RowComponent({ calendar_data, row, mockData, today, setSelectedDate, se
                                                     mockData={mockData} 
                                                     today={today} 
                                                     setSelectedDate={setSelectedDate}
-                                                    selectedDate={selectedDate}/>))}</tr>
+                                                    selectedDate={selectedDate}
+                                                    date={date}/>))}</tr>
     )
 }
 
-function MainComponent({ today, first_date, last_date }) {
+function MainComponent({ today, date }) {
 
     const [selectedDate, setSelectedDate] = useState(0);
 
@@ -79,16 +85,12 @@ function MainComponent({ today, first_date, last_date }) {
         }
     ]
 
-    const handleClick = (date) => {
-        
-    }
-
     const initCalendar = () => {
         let calendar_data = [];
         const last_date_of_full_calendar = 42;
         for (let i = 0; i < last_date_of_full_calendar; i++) {
-            if(i >= first_date.getDay() && i < (last_date.getDate() + first_date.getDay())) {
-                calendar_data.push(i - first_date.getDay() + 1);
+            if(i >= date.first_date.getDay() && i < (date.last_date.getDate() + date.first_date.getDay())) {
+                calendar_data.push(i - date.first_date.getDay() + 1);
             } else {
                 calendar_data.push(0);
             }
@@ -97,9 +99,6 @@ function MainComponent({ today, first_date, last_date }) {
     }
 
     const calendar_data = initCalendar();
-
-    console.log(calendar_data);
-
     const row_numbers = [0,1,2,3,4,5];
     
     return(
@@ -110,7 +109,8 @@ function MainComponent({ today, first_date, last_date }) {
                             row={row} mockData={mockData} 
                             today={today}
                             setSelectedDate={setSelectedDate}
-                            selectedDate={selectedDate}/>
+                            selectedDate={selectedDate}
+                            date={date}/>
             })}
         </React.Fragment>
     )
@@ -158,9 +158,9 @@ function Calendar() {
                     {days_of_week.map((day, i) => (<td>{day}</td>))}
                 </tr>
                 <MainComponent 
-                    first_date={date.first_date} 
-                    last_date={date.last_date} 
+                    date={date}
                     today={today} 
+                    
                     />
             </table>
             <button onClick={onClickPrev}>이전</button>
