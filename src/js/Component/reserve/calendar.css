@@ -1,0 +1,8 @@
+.is-active{
+    color: blue;
+    cursor: pointer;
+}
+
+.is-selected{
+    background-color: chartreuse;
+}
