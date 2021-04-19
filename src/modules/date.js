@@ -34,7 +34,8 @@ const initialState = [
         dates: dates,
         month: month,
         year: year,
-        minutes: minutes
+        minutes: minutes,
+        days_of_week: days_of_week,
     }
 ];
 

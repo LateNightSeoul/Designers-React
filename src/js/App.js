@@ -7,11 +7,13 @@ import SignUp from './Component/member/SignUp';
 import CreateDesigner from './Component/createStore/CreateDesigner';
 import ReservationList from './Component/member/ReservationList';
 import LikeList from './Component/member/LikeList';
+import ViewDesigner from './Component/reserve/ViewDesigner';
+import Reservating from './Component/reserve/Reservating';
 
 
 function App() {
   return (
-    <LikeList></LikeList>
+    <Reservating/>
   );
 }
 
