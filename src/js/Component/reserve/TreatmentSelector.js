@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-function TreatmentSelector() {
+function TreatmentSelector({ selected, setSelected}) {
     const [treatmentInfo, setTreatmentInfo] = useState({
         type: '',
         menus: []
@@ -50,7 +50,12 @@ function TreatmentSelector() {
     ]
 
     const onClickTreatmentType = (e) => {
-        setTreatmentInfo({type: e.target.name, menus: showTreatment(e)});
+        setTreatmentInfo({type: e.target.id, menus: showTreatment(e)});
+    }
+
+    const onClickTreatment = (e) => {
+        setSelected({treatment: e.target.id});
+        console.log(selected);
     }
 
     const showTreatment = (e) => {
@@ -76,9 +81,9 @@ function TreatmentSelector() {
             ))}
             {treatmentInfo.menus.length > 0 &&
                 treatmentInfo.menus.map((data) => (
-                    <div>
-                        <div>{data.treatment_name}</div>
-                        <div>{data.price}</div>
+                    <div onClick={onClickTreatment}>
+                        <div id={data.treatment_name}>{data.treatment_name}</div>
+                        <div id={data.treatment_name}>{data.price}</div>
                     </div>
                 ))}
         </div>

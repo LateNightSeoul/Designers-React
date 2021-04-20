@@ -6,12 +6,18 @@ import TreatmentSelector from './TreatmentSelector';
 
 function Reservating() {
 
+    const [selected, setSelected] = useState({
+        treatment: '',
+        date: '',
+        time: '',
+    })
+
     return(
         <div>
             <div>예약하기</div>
-            <TreatmentSelector></TreatmentSelector>
-            <Calendar></Calendar>
-            <TimeTable></TimeTable>
+            <TreatmentSelector selected={selected} setSelected={setSelected}/>
+            <Calendar selected={selected} setSelected={setSelected}/>
+            <TimeTable selected={selected} setSelected={setSelected}/>
         </div>
     )
 }
