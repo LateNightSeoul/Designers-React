@@ -19,7 +19,9 @@ function Reservating() {
             <TreatmentSelector selected={selected} setSelected={setSelected}/>
             <Calendar selected={selected} setSelected={setSelected}/>
             <TimeTable selected={selected} setSelected={setSelected}/>
+            <button>예약</button>
         </div>
+        
     )
 }
 
