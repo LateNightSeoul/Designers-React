@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 function TreatmentSelector() {
-    const [treatmentType, setTreatmentType] = useState('');
-    const [treatmentMenu, setTreatmentMenu] = useState({});
+    const [treatmentInfo, setTreatmentInfo] = useState({
+        type: '',
+        menus: []
+    });
+
     const mockData = [
         {
             treatment_type: '커트',
@@ -47,36 +50,32 @@ function TreatmentSelector() {
     ]
 
     const onClickTreatmentType = (e) => {
-        setTreatmentType(e.target.name);
-        console.log(treatmentType);
+        setTreatmentInfo({type: e.target.name, menus: showTreatment(e)});
     }
 
-    const showTreatment = () => {
-        const data = mockData.filter((data) => (data.treatment_type === treatmentType));
-        if (data.length > 0) {
-            const menus = []
-            data[0].treatments.map((data) => (
-                menus.push({
-                    treatment_name: data.treatment_name,
-                    price: data.price 
-                })
-            ))
-            setTreatmentMenu(menus)
-            return
+    const showTreatment = (e) => {
+        const data = mockData.filter((data) => (data.treatment_type === e.target.id));
+        if (data.length === 0) {
+            return []
         }
-        return;
+        let menus = []
+        data[0].treatments.map((data) => (
+            menus.push({
+                treatment_name: data.treatment_name,
+                price: data.price 
+            })
+        ))
+        return menus
     }
-
-    useEffect(showTreatment, [treatmentType]);
 
     return(
         <div>
             <div>시술선택</div>
             {mockData.map((data, i) => (
-                <button onClick={onClickTreatmentType} name={data.treatment_type}>{data.treatment_type}</button>
+                <button onClick={onClickTreatmentType} id={data.treatment_type}>{data.treatment_type}</button>
             ))}
-            {treatmentMenu.length > 0 &&
-                treatmentMenu.map((data) => (
+            {treatmentInfo.menus.length > 0 &&
+                treatmentInfo.menus.map((data) => (
                     <div>
                         <div>{data.treatment_name}</div>
                         <div>{data.price}</div>
