@@ -8,6 +8,7 @@ function Reservating() {
 
     const [selected, setSelected] = useState({
         treatment: '',
+        full_date: '',
         date: '',
         time: '',
     })

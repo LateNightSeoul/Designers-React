@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import './calendar.css';
 
-function DateComponent({calendar_data, row, column, mockData, today, selectedDate, setSelectedDate, date }) {
+function DateComponent({calendar_data, row, column, mockData, today, selectedDate, setSelectedDate, date, selected, setSelected }) {
 
     const date_today = calendar_data[row * 7 + column];
 
@@ -38,19 +38,22 @@ function DateComponent({calendar_data, row, column, mockData, today, selectedDat
         if(isAvailable(date_today) === false) {
             return
         }
+        setSelected({...selected, date: e.target.id});
         setSelectedDate({row : row, column : column});
+        console.log(selected);
     }
 
     return (
         <td className={[(isAvailable(date_today) === true && 'is-active'),
                         (isSelected() === true && 'is-selected')].join(' ')}
+            id={date_today}
             onClick={handleClick}>
                 {date_today === 0 ? '' : date_today}
         </td>
     )
 }
 
-function RowComponent({ calendar_data, row, mockData, today, setSelectedDate, selectedDate, date }) {
+function RowComponent({ calendar_data, row, mockData, today, setSelectedDate, selectedDate, date, selected, setSelected }) {
     const column_numbers = [0,1,2,3,4,5,6];
 
     return (
@@ -62,11 +65,13 @@ function RowComponent({ calendar_data, row, mockData, today, setSelectedDate, se
                                                     today={today} 
                                                     setSelectedDate={setSelectedDate}
                                                     selectedDate={selectedDate}
-                                                    date={date}/>))}</tr>
+                                                    date={date}
+                                                    selected={selected}
+                                                    setSelected={setSelected}/>))}</tr>
     )
 }
 
-function MainComponent({ today, date }) {
+function MainComponent({ today, date, selected, setSelected }) {
 
     const [selectedDate, setSelectedDate] = useState(0);
 
@@ -106,13 +111,15 @@ function MainComponent({ today, date }) {
                             today={today}
                             setSelectedDate={setSelectedDate}
                             selectedDate={selectedDate}
-                            date={date}/>
+                            date={date}
+                            selected={selected}
+                            setSelected={setSelected}/>
             })}
         </React.Fragment>
     )
 }
 
-function Calendar() {
+function Calendar({ selected, setSelected }) {
     const days_of_week = useSelector(state => state.date)[0].days_of_week;
 
     let today = new Date();
@@ -140,6 +147,13 @@ function Calendar() {
             last_date: new Date(next_date.getFullYear(), next_date.getMonth() + 1, 0)
         })
     }
+    
+    const onChangeDate = () => {
+        setSelected({...selected, full_date: date.today});
+        console.log(selected);
+    }
+    
+    useEffect(onChangeDate, [date]);
 
     return(
         <div>
@@ -155,7 +169,8 @@ function Calendar() {
                 <MainComponent 
                     date={date}
                     today={today} 
-                    
+                    selected={selected}
+                    setSelected={setSelected}
                     />
             </table>
             <button onClick={onClickPrev}>이전</button>

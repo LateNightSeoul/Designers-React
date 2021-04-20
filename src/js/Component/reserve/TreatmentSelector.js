@@ -54,7 +54,7 @@ function TreatmentSelector({ selected, setSelected}) {
     }
 
     const onClickTreatment = (e) => {
-        setSelected({treatment: e.target.id});
+        setSelected({...selected, treatment: e.target.id});
         console.log(selected);
     }
 

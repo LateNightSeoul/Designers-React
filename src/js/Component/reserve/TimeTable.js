@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-function TimeTable() {
+function TimeTable({ selected, setSelected }) {
     const [mockData, setMockData] = useState([
         {
             time: '12:00'
@@ -16,10 +16,15 @@ function TimeTable() {
         },
     ])
 
+    const onClickTime = (e) => {
+        setSelected({...selected, time: e.target.id});
+        console.log(selected);
+    }
+
     return(
         <div>
             <div>시간 선택</div>
-            {mockData.map((data) => (<div>{data.time}</div>))}
+            {mockData.map((data) => (<div onClick={onClickTime} id={data.time}>{data.time}</div>))}
         </div>
     )
 }
