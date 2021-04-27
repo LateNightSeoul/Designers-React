@@ -2,13 +2,14 @@ import React from 'react';
 import './navBar.css';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import Button from './Button';
+import ReservationList from '../member/ReservationList';
 
 function NavBar() {
     return(
         <header>
             <div class='inner'>
                 <div class='menu-group'>
-                    <BrowserRouter>
+                    
                         <div class='logo'>
                             <Link to='/'>Designers</Link>
                         </div>
@@ -23,19 +24,17 @@ function NavBar() {
                                 <Link to='/like'>좋아요</Link>
                             </li>
                         </ul>
-                    </BrowserRouter>
                 </div>
                 <div class='sign-group'>
                     <div class='btn-group'>
-                        <Button>
-                            <Link to='/login' class='btn'>로그인</Link>
-                        </Button>
-                        <Button>
-                            <Link to='/register' class='btn'>회원가입</Link>
-                        </Button>
+                        <Link to='/login'>
+                            <Button>로그인</Button>
+                        </Link>
+                        <Link to='/register'>
+                            <Button>회원가입</Button>
+                        </Link>
                         
                     </div>
-
                 </div>
             </div>
         </header>
