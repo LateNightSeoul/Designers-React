@@ -71,10 +71,7 @@ function RowComponent({ calendar_data, row, mockData, today, setSelectedDate, se
     )
 }
 
-function MainComponent({ today, date, selected, setSelected }) {
-
-    const [selectedDate, setSelectedDate] = useState(0);
-
+function MainComponent({ today, date, selected, setSelected, selectedDate, setSelectedDate }) {
     const mockData = [
         {
             date: 22,
@@ -129,6 +126,7 @@ function Calendar({ selected, setSelected }) {
         first_date: new Date(today.getFullYear(), today.getMonth(), 1),
         last_date: new Date(today.getFullYear(), today.getMonth() + 1, 0)
     })
+    const [selectedDate, setSelectedDate] = useState(0);
 
     const onClickNext = () => {
         let next_date = new Date(date.today.getFullYear(), date.today.getMonth() + 1);
@@ -137,6 +135,8 @@ function Calendar({ selected, setSelected }) {
             first_date: new Date(next_date.getFullYear(), next_date.getMonth(), 1),
             last_date: new Date(next_date.getFullYear(), next_date.getMonth() + 1, 0)
         })
+        setSelected({...selected, date: ''});
+        setSelectedDate(0);
     }
 
     const onClickPrev = () => {
@@ -146,6 +146,8 @@ function Calendar({ selected, setSelected }) {
             first_date: new Date(next_date.getFullYear(), next_date.getMonth(), 1),
             last_date: new Date(next_date.getFullYear(), next_date.getMonth() + 1, 0)
         })
+        setSelected({...selected, date: ''});
+        setSelectedDate(0);
     }
     
     const onChangeDate = () => {
@@ -171,6 +173,8 @@ function Calendar({ selected, setSelected }) {
                     today={today} 
                     selected={selected}
                     setSelected={setSelected}
+                    selectedDate={selectedDate}
+                    setSelectedDate={setSelectedDate}
                     />
             </table>
             <button onClick={onClickPrev}>이전</button>

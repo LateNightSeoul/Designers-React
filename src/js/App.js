@@ -9,11 +9,15 @@ import ReservationList from './Component/member/ReservationList';
 import LikeList from './Component/member/LikeList';
 import ViewDesigner from './Component/reserve/ViewDesigner';
 import Reservating from './Component/reserve/Reservating';
+import NavBar from './Component/ui/NavBar';
 
 
 function App() {
   return (
-    <Reservating/>
+    <React.Fragment>
+      <NavBar></NavBar>
+      <ViewDesigner/>
+    </React.Fragment>
   );
 }
 
