@@ -9,11 +9,26 @@ import ReservationList from './Component/member/ReservationList';
 import LikeList from './Component/member/LikeList';
 import ViewDesigner from './Component/reserve/ViewDesigner';
 import Reservating from './Component/reserve/Reservating';
+import NavBar from './Component/ui/NavBar';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 
 
 function App() {
   return (
-    <Reservating/>
+    <React.Fragment>
+      <BrowserRouter>
+        <NavBar></NavBar>
+        <div>
+          <Switch>
+            <Route exact path='/' component={ViewDesigner}></Route>
+            <Route path='/reservation' component={ReservationList}></Route>
+            <Route path='/like' component={LikeList}></Route>
+            <Route path='/login' component={Login}></Route>
+            <Route path='/register' component={SignUp}></Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
+    </React.Fragment>
   );
 }
 
