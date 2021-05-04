@@ -31,10 +31,13 @@ function Login() {
             return
         } 
 
-        const url = 'http://localhost:8080/login';
+        const url = 'http://localhost:8080/hi';
 
-        axios.post(url, loginInfo)  
-        .then((res) => { console.log(res.data) })
+        axios.post(url, {
+            id: loginInfo.id,
+            password: loginInfo.password
+        })  
+        .then((res) => { console.log(res) })
         .catch((res) => { console.log('id 혹은 비밀번호를 확인하세요.');})
     }
 
