@@ -11,7 +11,8 @@ import ViewDesigner from './Component/reserve/ViewDesigner';
 import Reservating from './Component/reserve/Reservating';
 import NavBar from './Component/ui/NavBar';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-
+import "tailwindcss/tailwind.css"
+import '../css/style.css';
 
 function App() {
   return (
