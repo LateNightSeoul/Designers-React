@@ -11,7 +11,7 @@ function NavBar() {
                 <div class='menu-group'>
                     
                         <div class='logo'>
-                            <Link to='/'>Designers</Link>
+                            <Link to='/main'>Designers</Link>
                         </div>
                         <ul class='main-menu'>
                             <li>

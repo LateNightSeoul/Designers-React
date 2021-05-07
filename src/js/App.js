@@ -11,6 +11,7 @@ import ViewDesigner from './Component/reserve/ViewDesigner';
 import Reservating from './Component/reserve/Reservating';
 import NavBar from './Component/ui/NavBar';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import Main from './Component/reserve/Main';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
             <Route path='/like' component={LikeList}></Route>
             <Route path='/login' component={Login}></Route>
             <Route path='/register' component={SignUp}></Route>
+            <Route path='/main' component={Main}></Route>
           </Switch>
         </div>
       </BrowserRouter>
