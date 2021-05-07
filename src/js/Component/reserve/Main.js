@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function TreatmentInfo({ treatment_name, price }) {
     return(
@@ -9,9 +10,10 @@ function TreatmentInfo({ treatment_name, price }) {
     )
 }
 
-function Content({ img_url, designer, address, treatments, like}) {
+function Content({ img_url, designer, address, treatments, like, designer_id }) {
     return(
         <div>
+            <Link to={`/designer/${designer_id}`}>
             <img src={img_url} width='120' height='160'/>
             <div>디자이너 {designer}</div>
             <div>주소 {address}</div>
@@ -22,6 +24,7 @@ function Content({ img_url, designer, address, treatments, like}) {
                                                                 price={treatment.price}/>)}
                  </ul>
             </div>
+            </Link>
         </div>
     )
 }
@@ -48,6 +51,7 @@ function ContentView() {
             id: 0,
             img_url: 'https://i.picsum.photos/id/682/200/300.jpg?hmac=z-Zlq9KVG3pNsE5Jo6A7vqnh-B910bdMztU5AZKQV-o',
             designer: '이해석',
+            designer_id: 221,
             like: 895,
             address: '서울시 성북구',
             treatments: [
@@ -73,6 +77,7 @@ function ContentView() {
             id: 1,
             img_url: 'https://i.picsum.photos/id/101/200/300.jpg?hmac=xUDvORQTxaML0fp9wnx4y6LIHvc7M-tNcOJz8rDLRXo',   
             designer: '이종영',
+            designer_id: 1,
             like: 5692,
             address: '서울시 성북구',
             treatments: [
@@ -111,6 +116,7 @@ function ContentView() {
                                                         address={content.address}
                                                         treatments={content.treatments}
                                                         like={content.like}
+                                                        designer_id={content.designer_id}
                                                         ></Content>)}
             </div>
         </div>
