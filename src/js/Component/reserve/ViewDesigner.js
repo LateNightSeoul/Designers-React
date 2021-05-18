@@ -145,18 +145,61 @@ function SearchVar({}){
         </fieldset>
     )
 }
-function ImageCard() {
+
+function ImageCard({}) {
     return(
-        <div className='max-w-sm rounded overflow-hidden shadow-lg'>
-            <img src='https://source.unsplash.com/random' alt='' className='px-6 py-4'/>
-            <div>
-                <ul>
-                    <li>디자이너 : 이해석</li>
-                    <li>주소 : 제주시 제주로 제주상가 1층</li>
-                    <li>좋아요 : 500</li>
-                </ul>
+        <div>
+            <div className='px-20 pt-20 text-2xl text-yellow-400'>
+                추천 디자이너
             </div>
-        </div>
+            <div className='flex'>
+                <div className='max-w-sm rounded-2xl overflow-hidden shadow-lg transform scale-75'>
+                    <img src='https://source.unsplash.com/random' alt='' className='px-6 py-4'/>
+                    <div className='px-6 py-4'>
+                        <ul className='font-bold text-purple-500 text-xl'>
+                            <li>디자이너 : 이해석</li>
+                            <li>주소 : 제주시 제주로 제주상가 1층</li>
+                            <li>좋아요 : 500</li>
+                        </ul>
+                    </div>
+                    <div className='px-6 py-4'>
+                        <div className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2'>
+                            #제주도
+                        </div>
+                    </div>
+                </div>
+                <div className='max-w-sm rounded-2xl overflow-hidden shadow-lg transform scale-75'>
+                    <img src='https://source.unsplash.com/random' alt='' className='px-6 py-4'/>
+                    <div className='px-6 py-4'>
+                        <ul className='font-bold text-purple-500 text-xl'>
+                            <li>디자이너 : 최준혁</li>
+                            <li>주소 : 평양시 평양로 평양상가 1층</li>
+                            <li>좋아요 : 400</li>
+                        </ul>
+                    </div>
+                    <div className='px-6 py-4'>
+                        <div className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2'>
+                            #평양
+                        </div>
+                    </div>
+                </div>
+                <div className='max-w-sm rounded-2xl overflow-hidden shadow-lg transform scale-75'>
+                    <img src='https://source.unsplash.com/random' alt='' className='px-6 py-4'/>
+                    <div className='px-6 py-4'>
+                        <ul className='font-bold text-purple-500 text-xl'>
+                            <li>디자이너 : 아종영</li>
+                            <li>주소 : 서울시 서울상가 1층</li>
+                            <li>좋아요 : 300</li>
+                        </ul>
+                    </div>
+                    <div className='px-6 py-4'>
+                        <div className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2'>
+                            #서울
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div>    
     )
 }
 

@@ -10,6 +10,7 @@ import LikeList from './Component/member/LikeList';
 import ViewDesigner from './Component/reserve/ViewDesigner';
 import Reservating from './Component/reserve/Reservating';
 import NavBar from './Component/ui/NavBar';
+import Main from './Component/reserve/Main';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import "tailwindcss/tailwind.css"
 import '../css/style.css';
@@ -23,6 +24,7 @@ function App() {
           <Switch>
             <Route exact path='/' component={Main}></Route>
             <Route path='/reservation' component={ReservationList}></Route>
+            <Route path='/ViewDesigner' component={ViewDesigner}></Route>
             <Route path='/like' component={LikeList}></Route>
             <Route path='/login' component={Login}></Route>
             <Route path='/register' component={SignUp}></Route>
