@@ -21,11 +21,13 @@ function App() {
         <NavBar></NavBar>
         <div>
           <Switch>
-            <Route exact path='/' component={ViewDesigner}></Route>
+            <Route exact path='/' component={Main}></Route>
             <Route path='/reservation' component={ReservationList}></Route>
             <Route path='/like' component={LikeList}></Route>
             <Route path='/login' component={Login}></Route>
             <Route path='/register' component={SignUp}></Route>
+            <Route path='/main' component={Main}></Route>
+            <Route path='/designer/:id' component={ViewDesigner}></Route>
           </Switch>
         </div>
       </BrowserRouter>
