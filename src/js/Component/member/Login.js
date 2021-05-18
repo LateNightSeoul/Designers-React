@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './css/login.css';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 function Login() {
@@ -77,12 +78,17 @@ function Login() {
                                 </label>
                             </div>
                             <div>
-                                <a href='' className='font-medium text-sm text-blue-500 pr-5'>
-                                    아이디 찾기
-                                </a>
-                                <a href='' className='font-medium text-sm text-blue-500'>
-                                    비밀번호 찾기
-                                </a>
+                                
+                                    <Link to='/findid'>
+                                        <div className='font-medium text-sm text-blue-500 pr-5'>
+                                            아이디 찾기
+                                        </div>
+                                    </Link>
+                                    <Link to='findpw'>
+                                        <div className='font-medium text-sm text-blue-500'>
+                                            비밀번호 찾기
+                                        </div>
+                                    </Link>    
                             </div>
                         </div>
                         <div>
@@ -93,6 +99,7 @@ function Login() {
                 </div>
             </div>
         </div>
+
     )
 }
 
