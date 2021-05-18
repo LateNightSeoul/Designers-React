@@ -14,6 +14,7 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import Main from './Component/reserve/Main';
 import "tailwindcss/tailwind.css"
 import '../css/style.css';
+import FindId from './Component/member/FindId';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
             <Route path='/register' component={SignUp}></Route>
             <Route path='/main' component={Main}></Route>
             <Route path='/designer/:id' component={ViewDesigner}></Route>
+            <Route path='/findid' component={FindId}></Route>
           </Switch>
         </div>
       </BrowserRouter>
