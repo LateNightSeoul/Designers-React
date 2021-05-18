@@ -13,6 +13,8 @@ function SignUp() {
         password: "",
         password_confirm: "",
         phone_number: "",
+        question: "",
+        question_answer: "",
     })
 
     const onChangeInfo = e => {
@@ -88,8 +90,7 @@ function SignUp() {
                 <div className={'signup-logo'}></div>
                 <form onSubmit={handleSubmit} className='bg-white p-8 rounded shadow-2xl space-y-3 mt-5'>
                     <div>
-                        <div className='font-bold text-3xl mb-5 text-center'>회원가입
-                        </div>
+                        <div className='font-bold text-3xl mb-5 text-center'>회원가입</div>
                         <div>
                             <label className='font-bold block mb-2'>아이디</label>
                             <div className='flex'>
@@ -206,6 +207,24 @@ function SignUp() {
                             type={Text} 
                             placeholder={'전화번호 입력'}
                             name='phone_number'
+                            onChange={onChangeInfo}
+                            className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
+                        </div>
+                        <div>
+                            <label className='block mb-1 font-bold'>ID/PW 찾기 질문</label>
+                            <input 
+                            type={Text} 
+                            placeholder={'질문 입력'}
+                            name='question'
+                            onChange={onChangeInfo}
+                            className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
+                        </div>
+                        <div>
+                            <label className='block mb-1 font-bold'>질문 답</label>
+                            <input 
+                            type={Text} 
+                            placeholder={'질문의 답 입력'}
+                            name='question_answer'
                             onChange={onChangeInfo}
                             className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
                         </div>
