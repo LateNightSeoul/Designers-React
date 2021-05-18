@@ -46,37 +46,39 @@ function FindId() {
 
 
     return(
-        <div>
-            <div>
-                <form onSubmit={handleSubmit}>
-                  <div>ID 찾기</div>
-                  <div>
-                      <label>이름</label>
-                      <div>
-                          <input 
+        <div className='bg-gray-200 flex flex-center justify-center min-h-screen'>
+            <div className='pt-20'>
+                <form onSubmit={handleSubmit} className='bg-white p-8 rounded-2xl shadow-2xl space-y-3 mt-5 mb-20'>
+                    <div className='font-bold text-3xl mb-5 text-center'>아이디찾기</div>
+                    <div>
+                        <label className='font-bold block mb-2'>이름</label>
+                        <div>
+                            <input 
                             type={Text} 
                             placeholder={'이름'}
                             name='name'
-                            onChange={onChangeInfo}/>
-                          
-                      </div>
-                      <label>이메일</label>
-                      <div>
-                      <input 
-                            type={Text} 
-                            placeholder={'ID'}
-                            name='email_id'
-                            onChange={onChangeInfo}/>
-                        <div>@</div>
-                        <input 
-                            type={Text}
-                            placeholder={'예) naver.com'}
-                            name='email_address'
-                            onChange={onChangeInfo}/>
-                      </div>
-                  </div>
+                            onChange={onChangeInfo}
+                            className='w-full border bodrer-gray-400 p-3 rounded-2xl mb-8'/>
+                        </div>
+                        <label className='block mb-1 font-bold'>이메일</label>
+                        <div className='flex mb-20'>
+                            <input 
+                                type={Text} 
+                                placeholder={'ID'}
+                                name='email_id'
+                                onChange={onChangeInfo}
+                                className='w-full border bodrer-gray-400 p-3 rounded-2xl mb-2'/>
+                            <div>@</div>
+                            <input 
+                                type={Text}
+                                placeholder={'예) naver.com'}
+                                name='email_address'
+                                onChange={onChangeInfo}
+                                className='w-full border bodrer-gray-400 p-3 rounded-2xl mb-2'/>
+                        </div>
+                    </div>
                     <div>
-                        <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded mb-2'>ID 찾기</button>
+                        <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded-2xl mb-2'>ID 찾기</button>
                     </div>
                 </form>
             </div>

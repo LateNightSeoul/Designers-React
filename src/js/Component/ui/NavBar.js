@@ -72,7 +72,7 @@ function NavBar() {
                         </div>                    
                     </div>
                     <div className='flex items-center space-x-4 px-4'>
-                        <Link to='login' >
+                        <Link to='/Login' >
                             <button className='transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Login</button>
                         </Link>
                         <Link to='/register'>
