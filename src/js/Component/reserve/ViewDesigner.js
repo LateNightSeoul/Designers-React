@@ -96,8 +96,8 @@ function ImageSlider() {
 
     return(
         <div>
-            <div>
-                디자이너 포트폴리오
+            <div className='px-40 pt-20 pb-12 text-2xl text-yellow-400'>
+                Desingers List
             </div>
             {img.map((image) => {
                 if(image.id === imgNumber) {
@@ -131,14 +131,46 @@ function DesignerInfo({ designer_name, address, designer_store, like_count }) {
         </div>
     )
 }
+function SearchVar({}){
+    return(
+        <fieldset className='w-full bg-gray-900'>
+            <div className='text-white flex justify-center text-3xl pt-20'>솔직한 리뷰, 믿을 수 있는 평점!</div>
+            <div className='text-white flex justify-center text-3xl py-2'>Designer Us</div>
+            <label className='flex justify-center pt-14 pb-6'>
+                <div className='flex justify-between w-6/12 rounded-2xl bg-white'>
+                    <input className='pl-4 w-2/3 rounded-2xl h-12 mr-24' type='text' placeholder='지역, ○○동'/>
+                    <button className='rounded-2xl text-white bg-yellow-500 w-1/6 md:w-32 lg:w-48 text-2xl' type='submit' value='검색'>검색</button>
+                </div>    
+            </label>        
+        </fieldset>
+    )
+}
+function ImageCard() {
+    return(
+        <div className='max-w-sm rounded overflow-hidden shadow-lg'>
+            <img src='https://source.unsplash.com/random' alt='' className='px-6 py-4'/>
+            <div>
+                <ul>
+                    <li>디자이너 : 이해석</li>
+                    <li>주소 : 제주시 제주로 제주상가 1층</li>
+                    <li>좋아요 : 500</li>
+                </ul>
+            </div>
+        </div>
+    )
+}
 
 
 function ViewDesigner() {
     return(
         <React.Fragment>
-            <DesignerInfo></DesignerInfo>
+            <SearchVar></SearchVar>
+            <hr></hr>
+            <ImageCard></ImageCard>
             <hr></hr>
             <ImageSlider></ImageSlider>
+            <hr></hr>
+            <DesignerInfo></DesignerInfo>
             <hr></hr>
             <TreatmentInfo></TreatmentInfo>
             <hr></hr>

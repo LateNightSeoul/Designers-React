@@ -83,63 +83,143 @@ function SignUp() {
     }
 
     return (
-        <div className={'signup-container'}>
-            <form onSubmit={handleSubmit}>
-                <div className={'signup-logo'}>회원가입</div>
-                <div>
-                    <input 
-                        type={Text} 
-                        placeholder={'이름'}
-                        name='name'
-                        onChange={onChangeInfo}/>
-                    <select
-                        type={Text} 
-                        placeholder={'성별'}
-                        name='sex'
-                        onChange={onChangeInfo}>
-                            <option></option>
-                            <option value="male">남자</option>
-                            <option value="female">여자</option>
-                    </select>
-                    <input 
-                        type={Text} 
-                        placeholder={'이메일'}
-                        name='email_id'
-                        onChange={onChangeInfo}/>
-                    <span>@</span>
-                    <input 
-                        type={Text}
-                        name='email_address'
-                        onChange={onChangeInfo}/>
-                    <input 
-                        type={Text} 
-                        placeholder={'아이디'}
-                        name='id'
-                        onChange={onChangeInfo}/>
-                    
-                    <button type='button' onClick={handleIdVerify}>중복확인</button>
-
-                    <input 
-                        type={Text} 
-                        placeholder={'비밀번호'}
-                        name='password'
-                        onChange={onChangeInfo}/>
-                    <input 
-                        type={Text} 
-                        placeholder={'비밀번호 확인'}
-                        name='password_confirm'
-                        onChange={onChangeInfo}/>
-                    <input 
-                        type={Text} 
-                        placeholder={'휴대폰인증'}
-                        name='phone_number'
-                        onChange={onChangeInfo}/>
-                </div>
-                <div>
-                    <button type='submit'>가입</button>
-                </div>
-            </form>
-        </div>
+        <div className='bg-gray-200 min-h-screen flex flex-center justify-center'>
+            <div>
+                <div className={'signup-logo'}></div>
+                <form onSubmit={handleSubmit} className='bg-white p-8 rounded shadow-2xl space-y-3 mt-5'>
+                    <div>
+                        <div className='font-bold text-3xl mb-5 text-center'>회원가입
+                        </div>
+                        <div>
+                            <label className='font-bold block mb-2'>아이디</label>
+                            <div className='flex'>
+                                <input 
+                                    type={Text} 
+                                    placeholder={'아이디'}
+                                    name='id'
+                                    onChange={onChangeInfo}
+                                    className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
+                                <button type='button' onClick={handleIdVerify} className='w-20 transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>중복확인</button>
+                            </div>
+                        </div>
+                        <div>
+                            <label className='block mb-1 font-bold'>비밀번호</label>
+                            <div className=''>
+                                <input 
+                                    type={Text} 
+                                    placeholder={'비밀번호'}
+                                    name='password'
+                                    onChange={onChangeInfo}
+                                    className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
+                                {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 inline-block" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                                </svg> */}
+                            </div>
+                        </div>
+                        <div>
+                            <label className='block mb-1 font-bold'>비밀번호 확인</label>
+                            <input 
+                                type={Text} 
+                                placeholder={'비밀번호 확인'}
+                                name='password_confirm'
+                                onChange={onChangeInfo}
+                                className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
+                        </div>
+                        <div>
+                            <label className='block mb-1 font-bold'>이름</label>
+                            <input 
+                                    type={Text} 
+                                    placeholder={'이름'}
+                                    name='name'
+                                    onChange={onChangeInfo}
+                                    className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
+                        </div>
+                        <div>
+                            <label className='block mb-1 font-bold'>성별</label>
+                            <select
+                                type={Text} 
+                                placeholder={'성별'}
+                                name='sex'
+                                onChange={onChangeInfo}
+                                className='w-full border bodrer-gray-400 p-3 rounded mb-2'>
+                                    <option value='' disabled selected hidden>성별</option>
+                                    <option value="male">남자</option>
+                                    <option value="female">여자</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label className='block mb-1 font-bold'>생년월일</label>
+                            <div className='flex'>
+                                <input 
+                                type={Text}
+                                placeholder={'년(4자리)'}
+                                name='year'
+                                onChange={onChangeInfo}
+                                className='w-full border bodrer-gray-400 p-3 rounded mb-2'
+                                />
+                                <select
+                                type={Text} 
+                                placeholder={'월'}
+                                name='month'
+                                onChange={onChangeInfo}
+                                className='w-full border bodrer-gray-400 p-3 rounded mb-2'>
+                                    <option value='' disabled selected hidden>월</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                                    <input 
+                                    type={Text}
+                                    placeholder={'일'}
+                                    name='day'
+                                    onChange={onChangeInfo}
+                                    className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
+                            </div>
+                        </div>
+                        <label className='block mb-1 font-bold'>본인확인 이메일(선택)</label>
+                        <div className='flex'>
+                            <input 
+                                type={Text} 
+                                placeholder={'선택입력'}
+                                name='email_id'
+                                onChange={onChangeInfo}
+                                className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
+                            <div>@</div>
+                            <input 
+                                type={Text}
+                                name='email_address'
+                                onChange={onChangeInfo}
+                                className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
+                        </div>
+                        <div>
+                            <label className='block mb-1 font-bold'>휴대전화</label>
+                            <input 
+                            type={Text} 
+                            placeholder={'전화번호 입력'}
+                            name='phone_number'
+                            onChange={onChangeInfo}
+                            className='w-full border bodrer-gray-400 p-3 rounded mb-2'/>
+                        </div>
+                    </div>
+                    <div>
+                        <input type='checkbox' id='agree '/>
+                        <label for='agree' className='font-bold'>동의</label>
+                    </div>
+                    <div>
+                        <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded mb-2'>가입하기</button>
+                    </div>
+                </form>
+            </div>    
+        </div>    
     )
 }
 
