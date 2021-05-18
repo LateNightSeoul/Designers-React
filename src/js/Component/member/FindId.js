@@ -31,7 +31,7 @@ function FindId() {
 
         checkEmpty();
 
-        const url = "http://localhost:8080/findid";
+        const url = "http://localhost:8080/find/id";
         
         const info_dto = {
             name: info.name,
@@ -60,6 +60,7 @@ function FindId() {
                             onChange={onChangeInfo}/>
                           
                       </div>
+                      <label>이메일</label>
                       <div>
                       <input 
                             type={Text} 

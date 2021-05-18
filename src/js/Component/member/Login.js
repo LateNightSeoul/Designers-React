@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import './css/login.css';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
-import FindId from './FindId';
 
 function Login() {
     
