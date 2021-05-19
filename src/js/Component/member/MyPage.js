@@ -103,9 +103,9 @@ function MyPage() {
                     <span>비밀번호</span>
                     <input type="password"
                         onChange={onChangeHandle}
-                        name="password">
-                        {myInfo.password}
-                    </input>
+                        name="password"
+                        value ={myInfo.password}/>
+
                     <button type='submit'>수정</button>
                 </form>
             </div>
@@ -117,18 +117,19 @@ function MyPage() {
             <form onSubmit={handleSubmitQuestion}>
                     <span>비밀번호 찾기 질문</span>
 
-                    <input type={Text}
+                    <input type="text"
                         onChange={onChangeHandle}
-                        name="question">
-                        {myInfo.question}
-                    </input>
-
+                        name="question" 
+                        value={myInfo.question}
+                        />
+                    
                     <span>비밀번호 찾기 답</span>
 
-                    <input type={Text}
+                    <input type="text"
                         onChange={onChangeHandle}
-                        name="question_answer">
-                        {myInfo.question_answer}
+                        name="question_answer"
+                        value={myInfo.question_answer}
+                        >
                     </input>
                     <button type='submit'>수정</button>
                 </form>
