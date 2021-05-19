@@ -10,6 +10,7 @@ function FindPw() {
         id: "",
         question: "",
         question_answer: "",
+        password: ""
     })
 
     const onChangeInfo = e => {
@@ -22,21 +23,46 @@ function FindPw() {
     const handleSubmit = e => {
         e.preventDefault();
 
-        if(!info.name || !info.id) {
-            alert("이름과 ID를 입력하세요.")
-            return;
+        if(!info.question) {
+
+            if(!info.name || !info.id) {
+                alert("이름과 ID를 입력하세요.")
+                return;
+            }
+
+            const url = "http://localhost:8080/member/pw_question";
+        
+            const info_dto = {
+                name: info.name,
+                id: info.id,
+            }
+    
+            axios.get(url, info_dto)
+            .then((res) => { setInfo({...info ,question_answer : res}) })
+            .catch((res) => { console.log('Error'); } )
+
+        } else {
+
+            if(!info.name || !info.id || !info.question_answer) {
+                alert("모든 공백을 채워주세요.");
+                return;
+            }
+
+            const url = "http://localhost:8080/member/findpw";
+
+            const info_dto = {
+                name: info.name,
+                id: info.id,
+                question_answer: info.question_answer
+            }
+
+            axios.post(url, info_dto)
+            .then((res) => {console.log(res);
+                            setInfo({...info, password : res})})
+            .catch((res) => { console.log('Error'); });
         }
 
-        const url = "http://localhost:8080/member/pw_question";
         
-        const info_dto = {
-            name: info.name,
-            id: info.id,
-        }
-    
-        axios.get(url, info_dto)
-        .then((res) => { setInfo({...info ,question_answer : res}) })
-        .catch((res) => { console.log('Error'); } )
     }
 
     return(
@@ -76,6 +102,13 @@ function FindPw() {
                                 name='question_answer'
                                 onChange={onChangeInfo}/>
                         </div>
+                            </div>
+                        }
+
+                        {info.password &&
+                            <div>
+                                <lable>당신의 패스워드는</lable>
+                                <div>{info.password} 입니다.</div>
                             </div>
                         }
                         
