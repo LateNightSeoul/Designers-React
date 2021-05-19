@@ -1,18 +1,28 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import axios from 'axios';
 
-function InputInfo({ key_name, value }) {
-    
-}
+const PasswordForm = React.memo(function PasswordForm({ handleSubmitPassword, onChangeHandle, myInfo }) {
+    return(
+        <form onSubmit={handleSubmitPassword}>
+                    <span>비밀번호</span>
+                    <input type="password"
+                        onChange={onChangeHandle}
+                        name="password"
+                        value ={myInfo.password}/>
 
-function SpanInfo({ key_name, value }) {
+                    <button type='submit'>수정</button>
+        </form>
+    )
+})
+
+const SpanInfo = React.memo(function SpanInfo({ key_name, value }) {
     return(
         <div>
                 <span>{key_name}</span>
                 <span>{value}</span>
         </div>
     )
-}
+})
 
 function MyPage() {
 
@@ -27,9 +37,9 @@ function MyPage() {
         question_answer: "예"
     })
 
-    const onChangeHandle = (e) => {
+    const onChangeHandle = useCallback((e) => {
         setMyInfo({...myInfo, [e.target.name] : e.target.value})
-    }
+    }, [myInfo.password, myInfo.question, myInfo.question_answer])
 
     const getInfos = () => {
 
@@ -106,15 +116,9 @@ function MyPage() {
                 <span>{myInfo.email_address}</span>
             </div>
             <div>
-                <form onSubmit={handleSubmitPassword}>
-                    <span>비밀번호</span>
-                    <input type="password"
-                        onChange={onChangeHandle}
-                        name="password"
-                        value ={myInfo.password}/>
-
-                    <button type='submit'>수정</button>
-                </form>
+                <PasswordForm onChangeHandle={onChangeHandle}
+                            handleSubmitPassword={handleSubmitPassword}
+                            myInfo={myInfo}/>
             </div>
             <SpanInfo key_name={'핸드폰 번호'} value={myInfo.phone_number}/>
             <div>
@@ -142,4 +146,4 @@ function MyPage() {
     )
 }
 
-export default MyPage;
+export default React.memo(MyPage);
