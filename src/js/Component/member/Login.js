@@ -32,7 +32,7 @@ function Login() {
             return
         } 
 
-        const url = 'http://localhost:8080/hi';
+        const url = 'http://localhost:8080/api/hi';
 
         axios.post(url, {
             id: loginInfo.id,

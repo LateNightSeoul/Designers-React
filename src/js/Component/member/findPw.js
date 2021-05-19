@@ -8,6 +8,7 @@ function FindPw() {
     const [info, setInfo] = useState({
         name: "",
         id: "",
+        question: "",
         question_answer: "",
     })
 
@@ -18,31 +19,23 @@ function FindPw() {
         })
     }
 
-    const checkEmpty = () => {
-        for (const [key, value] of Object.entries(info)) {
-            if (value === "") {
-                alert("정보를 모두 입력하세요.");
-                return false
-            }
-        }
-        return true
-    }
-
     const handleSubmit = e => {
         e.preventDefault();
 
-        checkEmpty();
+        if(!info.name || !info.id) {
+            alert("이름과 ID를 입력하세요.")
+            return;
+        }
 
-        const url = "http://localhost:8080/find/pw";
+        const url = "http://localhost:8080/member/pw_question";
         
         const info_dto = {
             name: info.name,
             id: info.id,
-            question_answer: info.question_answer,
         }
     
-        axios.post(url, info_dto)
-        .then((res) => { console.log(res.status) })
+        axios.get(url, info_dto)
+        .then((res) => { setInfo({...info ,question_answer : res}) })
         .catch((res) => { console.log('Error'); } )
     }
 
@@ -69,18 +62,23 @@ function FindPw() {
                                 name='id'
                                 onChange={onChangeInfo}/>
                         </div>
-                        <label>질문</label>
-                        <div>
-                            <div>{question}</div>
-                        </div>
-                        <label>답</label>
-                        <div>
+                        {info.question && 
+                            <div>
+                                <label>질문</label>
+                                <div>
+                                    <div>{info.question}</div>
+                                </div>
+                                <label>답</label>
+                                <div>
                             <input 
                                 type={Text} 
                                 placeholder={'답'}
                                 name='question_answer'
                                 onChange={onChangeInfo}/>
                         </div>
+                            </div>
+                        }
+                        
                     </div>
                     <div>
                         <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded mb-2'>ID 찾기</button>
