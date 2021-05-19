@@ -1,57 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import axios from 'axios';
 
-function MyPageModify() {
+function InputInfo({ key_name, value }) {
+    
+}
 
+function SpanInfo({ key_name, value }) {
+    return(
+        <div>
+                <span>{key_name}</span>
+                <span>{value}</span>
+        </div>
+    )
 }
 
 function MyPage() {
 
     const [myInfo, setMyInfo] = useState({
-        name: "",
-        email_id: "",
-        email_address: "",
-        password: "",
-        phone_number: "",
-        question: "",
-        question_answer: ""
+        name: "이해석",
+        id: "dlgotjrdlqslek",
+        email_id: "ssfgsrg",
+        email_address: "naver.com",
+        password: "srtsrtsrtsrt",
+        phone_number: "01056122134",
+        question: "죽을래?",
+        question_answer: "예"
     })
 
     const onChangeHandle = (e) => {
-        setMyInfo({
-            ...myInfo,
-            [e.target.name] : e.target.value
-        })
-    }
-
-    const handleSubmitPassword = () => {
-        if(!myInfo.password) {
-            alert("변경하고자 하는 비밀번호를 입력하세요.");
-            return;
-        } 
-        
-
-        const url = "http://localhost:8080/mypage/info/change_pw"
-
-        axios.post(url, {
-            password: myInfo.password
-        }).then((res) => {console.log(res)})
-        .catch((res) => {console.log(res)});
-    }
-
-    const handleSubmitQuestion = () => {
-        if(!myInfo.question || !myInfo.question_answer) {
-            alert("입력하지 않은 항목이 존재합니다.");
-            return;
-        }
-
-        const url = "http://localhost:8080/mypage/info/change_question"
-
-        axios.post(url, {
-            question: myInfo.question,
-            question_answer: myInfo.question_answer
-        }).then((res) => {console.log(res)})
-        .catch((res) => {console.log(res)});
+        setMyInfo({...myInfo, [e.target.name] : e.target.value})
     }
 
     const getInfos = () => {
@@ -84,14 +61,44 @@ function MyPage() {
         .catch((res) => {console.log(res);})
     }
 
-    getInfos();
+    useMemo(() => getInfos(), []);
+
+    const handleSubmitPassword = (e) => {
+        e.preventDefault();
+        if(!myInfo.password) {
+            alert("변경하고자 하는 비밀번호를 입력하세요.");
+            return;
+        } 
+        
+
+        const url = "http://localhost:8080/mypage/info/change_pw"
+
+        axios.post(url, {
+            password: myInfo.password
+        }).then((res) => {console.log(res)})
+        .catch((res) => {console.log(res)});
+    }
+
+    const handleSubmitQuestion = (e) => {
+        e.preventDefault();
+        if(!myInfo.question || !myInfo.question_answer) {
+            alert("입력하지 않은 항목이 존재합니다.");
+            return;
+        }
+
+        const url = "http://localhost:8080/mypage/info/change_question"
+
+        axios.post(url, {
+            question: myInfo.question,
+            question_answer: myInfo.question_answer
+        }).then((res) => {console.log(res)})
+        .catch((res) => {console.log(res)});
+    }
 
     return (
         <div>
-            <div>
-                <span>이름</span>
-                <span>{myInfo.name}</span>
-            </div>
+            <SpanInfo key_name={'이름'} value={myInfo.name}/>
+            <SpanInfo key_name={'ID'} value={myInfo.id}/>
             <div>
                 <span>이메일</span>
                 <span>{myInfo.email_id}</span>
@@ -109,10 +116,7 @@ function MyPage() {
                     <button type='submit'>수정</button>
                 </form>
             </div>
-            <div>
-                <span>핸드폰 번호</span>
-                <span>{myInfo.phone_number}</span>
-            </div>
+            <SpanInfo key_name={'핸드폰 번호'} value={myInfo.phone_number}/>
             <div>
             <form onSubmit={handleSubmitQuestion}>
                     <span>비밀번호 찾기 질문</span>
