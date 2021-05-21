@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './css/login.css';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
 
 function Login() {
@@ -8,6 +8,7 @@ function Login() {
     const [loginInfo, setLoginInfo] = useState({
         id: "",
         password: "",
+        login_complete: false,
     })
 
     const onChangeId = e => {
@@ -41,8 +42,13 @@ function Login() {
         .then((res) => { 
             const { accessToken } = res.data;
             axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+            setLoginInfo({...loginInfo, login_complete: true})
         })
         .catch((res) => { console.log('id 혹은 비밀번호를 확인하세요.');})
+    }
+
+    if(loginInfo.login_complete) {
+        <Redirect to='/'/>
     }
 
     return (
@@ -108,24 +114,3 @@ function Login() {
 }
 
 export default Login;
-
-        /*<form onSubmit={handleSubmit}>
-            <input 
-                type={Text} 
-                id={'login-id'} 
-                placeholder={'ID'}
-                onChange={onChangeId}/>
-            <input 
-                type={Text} 
-                id={'login-password'} 
-                placeholder={'PASSWORD'}
-                type='password'
-                onChange={onChangePassword}/>
-
-
-            <button type='submit'>
-                <div>로그인</div>
-            </button>
-            <button>회원가입</button>
-        </form>
-        */

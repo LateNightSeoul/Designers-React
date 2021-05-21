@@ -7,6 +7,7 @@ function FindId() {
         name: "",
         email_id: "",
         email_address: "",
+        id: "",
     })
 
     const onChangeInfo = e => {
@@ -40,7 +41,10 @@ function FindId() {
         }
     
         axios.post(url, info_dto)
-        .then((res) => { console.log(res.status) })
+        .then((res) => { 
+            console.log(res.status);
+            setInfo({...setInfo, id: res});
+        })
         .catch((res) => { console.log('Error'); } )
     }
 

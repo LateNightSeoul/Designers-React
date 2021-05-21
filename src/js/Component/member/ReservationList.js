@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import axios from 'axios';
 
 function ListComponent({ id, img_url, year, month, date, day, treatment_name, designer_name, price, point}) {
     return(
@@ -16,6 +17,20 @@ function ListComponent({ id, img_url, year, month, date, day, treatment_name, de
 }
 
 function ReservationList() {
+
+    const [listData, setListData] = useState([])
+
+    const getData = () => {
+
+        const url = 'http://localhost:8080/reservation/getList'
+
+        axios.get(url)
+            .then((res) => {console.log(res);})
+            .catch((res) => {})
+    }
+
+    getData();
+
     const [mockData, setMockData] = useState([
         {   
             id: 1,
