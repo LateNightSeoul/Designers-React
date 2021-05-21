@@ -8,9 +8,9 @@ function FindPw() {
     const [info, setInfo] = useState({
         name: "",
         id: "",
-        question: "",
-        question_answer: "",
-        password: ""
+        question: "a",
+        question_answer: "a",
+        password: "a"
     })
 
     const onChangeInfo = e => {
@@ -66,58 +66,60 @@ function FindPw() {
     }
 
     return(
-        <div>
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <div>비밀번호 찾기</div>
-                    <div>
-                        <label>이름</label>
+        <div className='bg-gray-200 flex flex-center justify-center min-h-screen '>
+            <div className='pt-20'>
+                <form onSubmit={handleSubmit} className='bg-white p-8 rounded-2xl shadow-2xl space-y-3 mt-5 mb-20 flex flex-grow-1'>
+                    <div className='block font-bold text-3xl mb-10 text-center'>비밀번호 찾기</div>
                         <div>
-                            <input 
+                            <label className='font-bold block mb-2'>이름</label>
+                            <div>
+                                <input 
                                 type={Text} 
                                 placeholder={'이름'}
                                 name='name'
-                                onChange={onChangeInfo}/>
-                          
-                        </div>
-                        <label>ID</label>
-                        <div>
-                            <input 
-                                type={Text} 
-                                placeholder={'ID'}
-                                name='id'
-                                onChange={onChangeInfo}/>
-                        </div>
-                        {info.question && 
-                            <div>
-                                <label>질문</label>
-                                <div>
-                                    <div>{info.question}</div>
+                                onChange={onChangeInfo}
+                                className='w-full border bodrer-gray-400 p-3 rounded-2xl mb-8
+                                '/>
+                            </div>
+                            <label className='block mb-1 font-bold'>ID</label>
+                            <div className='flex mb-2'>
+                                <input 
+                                    type={Text} 
+                                    placeholder={'ID'}
+                                    name='id'
+                                    onChange={onChangeInfo}
+                                    className='w-full border bodrer-gray-400 p-3 rounded-2xl mb-2'/>
+                            </div>
+                            {info.question && 
+                                <div className='mb-8'>
+                                    <label className='block mb-1 text-red-400'>질문</label>
+                                    <div className='w-full border bodrer-gray-400 p-3 rounded-2xl mb-8'>
+                                        <div>{info.question}</div>
+                                    </div>
+                                    <label className='block mb-1 font-bold'>답</label>
+                                    <div>
+                                <input 
+                                    type={Text} 
+                                    placeholder={'답'}
+                                    name='question_answer'
+                                    onChange={onChangeInfo}
+                                    className='w-full border bodrer-gray-400 p-3 rounded-2xl mb-2'/>
+                                    </div>
                                 </div>
-                                <label>답</label>
-                                <div>
-                            <input 
-                                type={Text} 
-                                placeholder={'답'}
-                                name='question_answer'
-                                onChange={onChangeInfo}/>
-                        </div>
-                            </div>
-                        }
+                            }
 
-                        {info.password &&
-                            <div>
-                                <lable>당신의 패스워드는</lable>
-                                <div>{info.password} 입니다.</div>
-                            </div>
-                        }
-                        
-                    </div>
-                    <div>
-                        <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded mb-2'>비밀번호 찾기</button>
-                    </div>
-                </form>
-            </div>
+                            {info.password &&
+                                <div className='flex justify-center min-w-full'>
+                                    <lable className='font-bold'>당신의 패스워드는 <div className='text-2xl text-blue-400 flex'>{info.password} </div>입니다.</lable>
+                                </div>
+                            }
+                            
+                        </div>
+                        <div>
+                            <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded mb-2'>비밀번호 찾기</button>
+                        </div>
+                    </form>
+                </div>
         </div>
     )
 }
