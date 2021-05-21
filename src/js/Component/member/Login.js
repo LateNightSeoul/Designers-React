@@ -100,7 +100,7 @@ function Login() {
                             </div>
                         </div>
                         <div>
-                            <button type='submit' className='w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm'>로그인</button>
+                            <button type='submit' className='w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>로그인</button>
                             <Link to='/register'>
                                 <button className='pt-4'>회원가입</button>
                             </Link>

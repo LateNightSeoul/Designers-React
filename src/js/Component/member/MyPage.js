@@ -4,13 +4,14 @@ import axios from 'axios';
 const PasswordForm = React.memo(function PasswordForm({ handleSubmitPassword, onChangeHandle, myInfo }) {
     return(
         <form onSubmit={handleSubmitPassword}>
-                    <span>비밀번호</span>
+                    <span>비밀번호 :</span>
                     <input type="password"
                         onChange={onChangeHandle}
                         name="password"
-                        value ={myInfo.password}/>
+                        value ={myInfo.password}
+                        className='bg-gray-200 rounded-2xl pl-2'/>
 
-                    <button type='submit'>수정</button>
+                    <button type='submit' className='pl-2 transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 font-bold text-yellow-600'>수정</button>
         </form>
     )
 })
@@ -27,14 +28,14 @@ const SpanInfo = React.memo(function SpanInfo({ key_name, value }) {
 function MyPage() {
 
     const [myInfo, setMyInfo] = useState({
-        name: "이해석",
-        id: "dlgotjrdlqslek",
-        email_id: "ssfgsrg",
-        email_address: "naver.com",
+        name: " 이해석",
+        id: " dlgotjrdlqslek",
+        email_id: " ssfgsrg",
+        email_address: " naver.com",
         password: "srtsrtsrtsrt",
-        phone_number: "01056122134",
-        question: "죽을래?",
-        question_answer: "예"
+        phone_number: " 010-5612-2134",
+        question: " 죽을래?",
+        question_answer: " 예"
     })
 
     const onChangeHandle = useCallback((e) => {
@@ -106,41 +107,55 @@ function MyPage() {
     }
 
     return (
-        <div>
-            <SpanInfo key_name={'이름'} value={myInfo.name}/>
-            <SpanInfo key_name={'ID'} value={myInfo.id}/>
-            <div>
-                <span>이메일</span>
-                <span>{myInfo.email_id}</span>
-                <span>@</span>
-                <span>{myInfo.email_address}</span>
-            </div>
-            <div>
-                <PasswordForm onChangeHandle={onChangeHandle}
-                            handleSubmitPassword={handleSubmitPassword}
-                            myInfo={myInfo}/>
-            </div>
-            <SpanInfo key_name={'핸드폰 번호'} value={myInfo.phone_number}/>
-            <div>
-            <form onSubmit={handleSubmitQuestion}>
-                    <span>비밀번호 찾기 질문</span>
-
-                    <input type="text"
-                        onChange={onChangeHandle}
-                        name="question" 
-                        value={myInfo.question}
-                        />
-                    
-                    <span>비밀번호 찾기 답</span>
-
-                    <input type="text"
-                        onChange={onChangeHandle}
-                        name="question_answer"
-                        value={myInfo.question_answer}
-                        >
-                    </input>
-                    <button type='submit'>수정</button>
-                </form>
+        <div className='bg-gray-300 flex flex-center justify-center min-h-screen pt-40'>
+            <div className='bg-gray-200 rounded-2xl w-auto h-1/2'>
+                <div className='text-yellow-400 text-3xl px-10 py-10 font-bold'>
+                    My Page
+                </div>
+                <div className='pl-20'>
+                    <div className='pb-5 text-2xl'>
+                        <SpanInfo key_name={'이름 :'} value={myInfo.name}/>
+                    </div>
+                    <div className='pb-5 text-2xl'>
+                        <SpanInfo key_name={'ID :'} value={myInfo.id}/>
+                    </div>
+                </div>
+                <div className='flex pl-20'>
+                    <div className='pb-5 text-2xl pr-2'>이메일 :</div>
+                    <div className='pb-5 text-2xl'>{myInfo.email_id}</div>
+                    <div className='pb-5 text-2xl'>@</div>
+                    <div className='pb-5 text-2xl'>{myInfo.email_address}</div>
+                </div>
+                <div className='pb-5 text-2xl pl-20'>
+                    <PasswordForm onChangeHandle={onChangeHandle}
+                                handleSubmitPassword={handleSubmitPassword}
+                                myInfo={myInfo}/>
+                </div>
+                <div className='pb-5 text-2xl pl-20'>
+                    <SpanInfo key_name={'핸드폰 번호 :'} value={myInfo.phone_number}/>
+                </div>
+                <div className='pb-5 text-2xl pl-20'>
+                    <form onSubmit={handleSubmitQuestion}>
+                        <div className='pb-5 flex'>비밀번호 찾기 질문 :
+                            <input type="text"
+                                onChange={onChangeHandle}
+                                name="question" 
+                                value={myInfo.question}
+                                className='bg-gray-200 rounded-2xl'
+                                />
+                        </div>
+                        <div className= 'flex pb-5'>
+                            <div>비밀번호 찾기 답 :</div>
+                            <input type="text"
+                                onChange={onChangeHandle}
+                                name="question_answer"
+                                value={myInfo.question_answer}
+                                className='bg-gray-200 rounded-2xl'
+                                />
+                        <button type='submit' className='pl-2 transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 font-bold text-yellow-600'>수정</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     )
