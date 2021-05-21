@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 
 function LikeComponent({ id, designer_name, address, designer_store, point }) {
@@ -14,6 +15,20 @@ function LikeComponent({ id, designer_name, address, designer_store, point }) {
 }
 
 function LikeList() {
+
+    const [listData, setListData] = useState([])
+
+    const getData = () => {
+
+        const url = 'http://localhost:8080/like/getList'
+
+        axios.get(url)
+            .then((res) => {console.log(res);})
+            .catch((res) => {})
+    }
+
+    getData();
+
     const [mockData, setMockData] = useState([
         {
             id: 1,
