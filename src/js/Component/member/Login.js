@@ -32,7 +32,7 @@ function Login() {
             return
         } 
 
-        const url = 'http://localhost:8080/hi';
+        const url = 'http://localhost:8080/';
 
         axios.post(url, {
             id: loginInfo.id,
@@ -93,7 +93,9 @@ function Login() {
                         </div>
                         <div>
                             <button type='submit' className='w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm'>로그인</button>
-                            <button className='pt-4'>회원가입</button>
+                            <Link to='/register'>
+                                <button className='pt-4'>회원가입</button>
+                            </Link>
                         </div>
                     </form>
                 </div>

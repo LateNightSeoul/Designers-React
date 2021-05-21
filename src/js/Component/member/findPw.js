@@ -83,7 +83,7 @@ function FindPw() {
                         </div>
                     </div>
                     <div>
-                        <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded mb-2'>ID 찾기</button>
+                        <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded mb-2'>비밀번호 찾기</button>
                     </div>
                 </form>
             </div>
