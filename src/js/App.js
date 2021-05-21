@@ -12,7 +12,6 @@ import Reservating from './Component/reserve/Reservating';
 import NavBar from './Component/ui/NavBar';
 import Main from './Component/reserve/Main';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import Main from './Component/reserve/Main';
 import "tailwindcss/tailwind.css"
 import '../css/style.css';
 import FindId from './Component/member/FindId';

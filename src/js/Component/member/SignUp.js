@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './css/signup.css';
 import axios from 'axios';
+import { Redirect } from 'react-router';
 
 function SignUp() {
     const [signupInfo, setSignupInfo] = useState({
@@ -9,12 +10,13 @@ function SignUp() {
         email_id: "",
         email_address: "",
         id: "",
-        id_verify: false,
+        id_verify: true,
         password: "",
         password_confirm: "",
         phone_number: "",
         question: "",
         question_answer: "",
+        signup_complete : false,    
     })
 
     const onChangeInfo = e => {
@@ -50,6 +52,10 @@ function SignUp() {
         if(checkPassword() === false) {
             return
         }
+
+        if(signupInfo.id_verify == false) {
+            alert("ID 중복체크를 해주세요.");
+        }
     }
 
     const handleIdVerify = e => {
@@ -58,7 +64,7 @@ function SignUp() {
         const url = "http://localhost:8080/signup/idverify";
 
         axios.post(url, signupInfo.id)
-        .then((res) => { console.log(res.status) })
+        .then((res) => { setSignupInfo({...signupInfo, id_verify : true}) })
         .catch((res) => { console.log('이미 존재하는 id입니다.'); } )
         
     }
@@ -80,8 +86,15 @@ function SignUp() {
         }
     
         axios.post(url, signup_info_dto)
-        .then((res) => { console.log(res.status) })
-        .catch((res) => { console.log('Error'); } )
+        .then((res) => { console.log(res.status) 
+                        return setSignupInfo({...signupInfo, signup_complete: true})})
+        .catch((res) => {
+            console.log("hi");
+            })
+    }
+    
+    if (signupInfo.signup_complete) {
+        return <Redirect to='/login'/>
     }
 
     return (
