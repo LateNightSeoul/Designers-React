@@ -32,13 +32,16 @@ function Login() {
             return
         } 
 
-        const url = 'http://localhost:8080/';
+        const url = 'http://localhost:8080/member/authenticate';
 
         axios.post(url, {
             id: loginInfo.id,
             password: loginInfo.password
         })  
-        .then((res) => { console.log(res) })
+        .then((res) => { 
+            const { accessToken } = res.data;
+            axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        })
         .catch((res) => { console.log('id 혹은 비밀번호를 확인하세요.');})
     }
 

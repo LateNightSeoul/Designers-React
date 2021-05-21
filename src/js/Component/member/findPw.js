@@ -8,7 +8,9 @@ function FindPw() {
     const [info, setInfo] = useState({
         name: "",
         id: "",
+        question: "",
         question_answer: "",
+        password: ""
     })
 
     const onChangeInfo = e => {
@@ -18,32 +20,49 @@ function FindPw() {
         })
     }
 
-    const checkEmpty = () => {
-        for (const [key, value] of Object.entries(info)) {
-            if (value === "") {
-                alert("정보를 모두 입력하세요.");
-                return false
-            }
-        }
-        return true
-    }
-
     const handleSubmit = e => {
         e.preventDefault();
 
-        checkEmpty();
+        if(!info.question) {
 
-        const url = "http://localhost:8080/find/pw";
+            if(!info.name || !info.id) {
+                alert("이름과 ID를 입력하세요.")
+                return;
+            }
+
+            const url = "http://localhost:8080/member/pw_question";
         
-        const info_dto = {
-            name: info.name,
-            id: info.id,
-            question_answer: info.question_answer,
-        }
+            const info_dto = {
+                name: info.name,
+                id: info.id,
+            }
     
-        axios.post(url, info_dto)
-        .then((res) => { console.log(res.status) })
-        .catch((res) => { console.log('Error'); } )
+            axios.get(url, info_dto)
+            .then((res) => { setInfo({...info ,question_answer : res}) })
+            .catch((res) => { console.log('Error'); } )
+
+        } else {
+
+            if(!info.name || !info.id || !info.question_answer) {
+                alert("모든 공백을 채워주세요.");
+                return;
+            }
+
+            const url = "http://localhost:8080/member/findpw";
+
+            const info_dto = {
+                name: info.name,
+                id: info.id,
+                question_answer: info.question_answer
+            }
+
+            axios.post(url, info_dto)
+            .then((res) => {console.log(res);
+                            setInfo({...info, password : res})})
+            .catch((res) => { console.log('Error'); });
+        }
+
+        
     }
 
     return(
@@ -69,18 +88,30 @@ function FindPw() {
                                 name='id'
                                 onChange={onChangeInfo}/>
                         </div>
-                        <label>질문</label>
-                        <div>
-                            <div>{question}</div>
-                        </div>
-                        <label>답</label>
-                        <div>
+                        {info.question && 
+                            <div>
+                                <label>질문</label>
+                                <div>
+                                    <div>{info.question}</div>
+                                </div>
+                                <label>답</label>
+                                <div>
                             <input 
                                 type={Text} 
                                 placeholder={'답'}
                                 name='question_answer'
                                 onChange={onChangeInfo}/>
                         </div>
+                            </div>
+                        }
+
+                        {info.password &&
+                            <div>
+                                <lable>당신의 패스워드는</lable>
+                                <div>{info.password} 입니다.</div>
+                            </div>
+                        }
+                        
                     </div>
                     <div>
                         <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded mb-2'>비밀번호 찾기</button>
