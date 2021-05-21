@@ -60,12 +60,23 @@ function SignUp() {
 
     const handleIdVerify = e => {
         e.preventDefault();
+
+        if(!signupInfo.id) {
+            alert("ID를 입력하세요");
+            return
+        }
         
         const url = "http://localhost:8080/signup/idverify";
 
         axios.post(url, signupInfo.id)
-        .then((res) => { setSignupInfo({...signupInfo, id_verify : true}) })
-        .catch((res) => { console.log('이미 존재하는 id입니다.'); } )
+        .then((res) => { 
+            alert("사용 가능한 ID입니다.");
+            setSignupInfo({...signupInfo, id_verify : true
+            }) })
+        .catch((res) => { 
+            alert("이미 존재하는 id입니다.");
+            console.log('이미 존재하는 id입니다.'); 
+        } )
         
     }
 
@@ -87,12 +98,12 @@ function SignUp() {
     
         axios.post(url, signup_info_dto)
         .then((res) => { console.log(res.status) 
-                        return setSignupInfo({...signupInfo, signup_complete: true})})
+                        setSignupInfo({...signupInfo, signup_complete: true})})
         .catch((res) => {
             console.log("hi");
             })
     }
-    
+
     if (signupInfo.signup_complete) {
         return <Redirect to='/login'/>
     }
