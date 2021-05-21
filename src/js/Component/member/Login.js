@@ -77,7 +77,8 @@ function Login() {
                                     로그인 상태 유지
                                 </label>
                             </div>
-                            <div className='flex'>
+                            <div>
+                                
                                     <Link to='/findid'>
                                         <div className='font-medium text-sm text-blue-500 pr-5'>
                                             아이디 찾기
