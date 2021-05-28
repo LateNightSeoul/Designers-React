@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactHtmlParser from 'react-html-parser';
+import { Link } from 'react-router-dom';
 
 function Description() {
     const [mockData, setMockData] = useState({
@@ -114,6 +115,7 @@ function ImageSlider() {
 
 function DesignerInfo({ designer_name, address, designer_store, like_count }) {
     const [mockData, setMockData] = useState({
+        designer_id : 135,
         designer_name: '이해석',
         like_count: 76,
         address: '서울시 성북구 길음로',
@@ -127,7 +129,9 @@ function DesignerInfo({ designer_name, address, designer_store, like_count }) {
             <div>{mockData.like_count}</div>
             <div>{mockData.address}</div>
             <div>{mockData.designer_store}</div>
-            <button>예약하기</button>
+            <Link to={`/reservating/${mockData.designer_id}`}>
+                <button>예약하기</button>
+            </Link>
         </div>
     )
 }

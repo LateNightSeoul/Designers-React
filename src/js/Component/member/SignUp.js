@@ -97,7 +97,8 @@ function SignUp() {
         }
     
         axios.post(url, signup_info_dto)
-        .then((res) => { console.log(res.status) 
+        .then((res) => { console.log(res.status);
+                        alert("회원가입에 성공하였습니다.");
                         setSignupInfo({...signupInfo, signup_complete: true})})
         .catch((res) => {
             console.log("hi");
