@@ -37,6 +37,7 @@ function App() {
             <Route path='/findpw' component={FindPw}></Route>
             <Route path='/mypage' component={MyPage}></Route>
             <Route path='/reservating/:id' component={Reservating}></Route>
+            <Route path='/scheduler/:id' component={SchedulerContainer}></Route>
           </Switch>
         </div>
       </BrowserRouter>
