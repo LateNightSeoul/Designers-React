@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import './css/login.css';
+import { useSelector, useDispatch } from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
+import { onLoginSuccess } from '../../../modules/user';
 
 function Login() {
-    
+
+    const dispatch = useDispatch();
+    const userInfo = useSelector((state) => state.user)
     const [loginInfo, setLoginInfo] = useState({
         id: "",
         password: "",
@@ -40,8 +44,10 @@ function Login() {
             password: loginInfo.password
         })  
         .then((res) => { 
-            const { accessToken } = res.data;
+            const { accessToken } = res.data.token;
             axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+            dispatch(onLoginSuccess(res.data))
+            localStorage.setItem('token', accessToken);
             setLoginInfo({...loginInfo, login_complete: true})
         })
         .catch((res) => { console.log('id 혹은 비밀번호를 확인하세요.');})
