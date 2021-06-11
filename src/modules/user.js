@@ -2,12 +2,12 @@ const LOGIN_SUCCESS = 'user/LOGIN_SUCCESS';
 const LOGOUT_SUCCESS = 'user/LOGOUT_SUCCESS';
 
 
-export const onLoginSuccess = (userId, role) => ({
+export const onLoginSuccess = (datas) => ({
     type: LOGIN_SUCCESS,
     userInfo : {
         logged: true,
-        userId: userId,
-        role: role
+        userId: datas.userId,
+        role: datas.role
     }
 })
 
