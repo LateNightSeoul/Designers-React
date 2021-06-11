@@ -1,10 +1,8 @@
 import React from 'react';
 import '../css/App.css';
-import CreateTreatment from './Component/createStore/CreateTreatment';
 import SchedulerContainer from './Component/scheduler/SchedulerContainer';
 import Login from './Component/member/Login';
 import SignUp from './Component/member/SignUp';
-import CreateDesigner from './Component/createStore/CreateDesigner';
 import ReservationList from './Component/member/ReservationList';
 import LikeList from './Component/member/LikeList';
 import ViewDesigner from './Component/reserve/ViewDesigner';
@@ -14,11 +12,32 @@ import Main from './Component/reserve/Main';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import "tailwindcss/tailwind.css"
 import '../css/style.css';
+import { useSelector, useDispatch } from 'react-redux';
 import FindId from './Component/member/FindId';
 import FindPw from './Component/member/findPw';
 import MyPage from './Component/member/MyPage';
+import user, { onLoginSuccess } from '../modules/user';
 
 function App() {
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.user);
+  const localStorageUserInfo = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (localStorageUserInfo) {
+      const url = 'http://localhost:8080/member/reAuthenticate';
+
+        axios.post(url, {
+            token: localStorageUserInfo
+        })  
+        .then((res) => { 
+            dispatch(onLoginSuccess(res.data))
+            localStorage.setItem('token', res.data.token);
+        })
+        .catch((res) => { console.log('Login needed');})
+    }
+  })
+
   return (
     <React.Fragment>
       <BrowserRouter>
