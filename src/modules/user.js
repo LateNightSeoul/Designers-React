@@ -7,7 +7,8 @@ export const onLoginSuccess = (datas) => ({
     userInfo : {
         logged: true,
         userId: datas.userId,
-        role: datas.role
+        role: datas.role,
+        token: datas.token
     }
 })
 
@@ -16,7 +17,8 @@ export const onLogoutSuccess = () => ({
     userInfo: {
         logged: false,
         userId: '',
-        role: ''
+        role: '',
+        token : ''
     }
 })
 
@@ -24,7 +26,8 @@ export const onLogoutSuccess = () => ({
 const initialState = {
     logged: false,
     userId: '',
-    role: ''
+    role: '',
+    token: ''
 }
 
 export default function user(state = initialState, action) {
