@@ -143,7 +143,7 @@ function SearchVar({}){
             <label className='flex justify-center pt-14 pb-6'>
                 <div className='flex justify-between w-6/12 rounded-2xl bg-white'>
                     <input className='pl-4 w-2/3 rounded-2xl h-12 mr-24' type='text' placeholder='지역, ○○동'/>
-                    <button className='rounded-2xl text-white bg-yellow-500 w-1/6 md:w-32 lg:w-48 text-2xl' type='submit' value='검색'>검색</button>
+                    <button className='rounded-2xl text-white bg-yellow-500 w-1/6 md:w-32 lg:w-48 text-2xl transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-150' type='submit' value='검색'>검색</button>
                 </div>    
             </label>        
         </fieldset>

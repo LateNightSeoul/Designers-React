@@ -259,7 +259,7 @@ function SignUp() {
                         <label for='agree' className='font-bold'>동의</label>
                     </div>
                     <div>
-                        <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded mb-2'>가입하기</button>
+                        <button type='submit' className='w-full border bodrer-gray-400 p-3 rounded mb-2 transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>가입하기</button>
                     </div>
                 </form>
             </div>    
