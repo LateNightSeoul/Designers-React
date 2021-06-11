@@ -47,7 +47,7 @@ function Login() {
             const { accessToken } = res.data.token;
             axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
             dispatch(onLoginSuccess(res.data))
-            localStorage.setItem('token', accessToken);
+            localStorage.setItem('token', res.data.token);
             setLoginInfo({...loginInfo, login_complete: true})
         })
         .catch((res) => { console.log('id 혹은 비밀번호를 확인하세요.');})
