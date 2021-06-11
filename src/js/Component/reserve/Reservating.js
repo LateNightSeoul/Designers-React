@@ -4,14 +4,18 @@ import TimeTable from './TimeTable';
 import TreatmentSelector from './TreatmentSelector';
 
 
-function Reservating() {
+function Reservating({match}) {
 
     const [selected, setSelected] = useState({
         treatment: '',
         full_date: '',
         date: '',
         time: '',
+        designer_id: match.params.id
     })
+
+    console.log(selected.designer_id)
+    
 
     return(
         <div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactHtmlParser from 'react-html-parser';
+import { Link } from 'react-router-dom';
 
 function Description() {
     const [mockData, setMockData] = useState({
@@ -114,6 +115,7 @@ function ImageSlider() {
 
 function DesignerInfo({ designer_name, address, designer_store, like_count }) {
     const [mockData, setMockData] = useState({
+        designer_id : 135,
         designer_name: '이해석',
         like_count: 76,
         address: '서울시 성북구 길음로',
@@ -127,7 +129,9 @@ function DesignerInfo({ designer_name, address, designer_store, like_count }) {
             <div>{mockData.like_count}</div>
             <div>{mockData.address}</div>
             <div>{mockData.designer_store}</div>
-            <button>예약하기</button>
+            <Link to={`/reservating/${mockData.designer_id}`}>
+                <button>예약하기</button>
+            </Link>
         </div>
     )
 }
@@ -139,7 +143,7 @@ function SearchVar({}){
             <label className='flex justify-center pt-14 pb-6'>
                 <div className='flex justify-between w-6/12 rounded-2xl bg-white'>
                     <input className='pl-4 w-2/3 rounded-2xl h-12 mr-24' type='text' placeholder='지역, ○○동'/>
-                    <button className='rounded-2xl text-white bg-yellow-500 w-1/6 md:w-32 lg:w-48 text-2xl' type='submit' value='검색'>검색</button>
+                    <button className='rounded-2xl text-white bg-yellow-500 w-1/6 md:w-32 lg:w-48 text-2xl transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-150' type='submit' value='검색'>검색</button>
                 </div>    
             </label>        
         </fieldset>

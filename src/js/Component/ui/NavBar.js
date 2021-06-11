@@ -69,6 +69,9 @@ function NavBar() {
                             <div className='transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>
                                 <Link to='/like'>Like</Link>
                             </div>
+                            <div className='transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>
+                                <Link to={`/scheduler/}`}>Schedule</Link>
+                            </div>
                         </div>                    
                     </div>
                     <div className='flex items-center space-x-4 px-4'>

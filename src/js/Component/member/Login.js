@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import './css/login.css';
+import { useSelector, useDispatch } from 'react-redux';
 import {Link, Redirect} from 'react-router-dom';
 import axios from 'axios';
+import { onLoginSuccess } from '../../../modules/user';
 
 function Login() {
-    
+
+    const dispatch = useDispatch();
+    const userInfo = useSelector((state) => state.user)
     const [loginInfo, setLoginInfo] = useState({
         id: "",
         password: "",
@@ -40,8 +44,10 @@ function Login() {
             password: loginInfo.password
         })  
         .then((res) => { 
-            const { accessToken } = res.data;
+            const { accessToken } = res.data.token;
             axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+            dispatch(onLoginSuccess(res.data))
+            localStorage.setItem('token', res.data.token);
             setLoginInfo({...loginInfo, login_complete: true})
         })
         .catch((res) => { console.log('id 혹은 비밀번호를 확인하세요.');})
@@ -86,8 +92,7 @@ function Login() {
                                     로그인 상태 유지
                                 </label>
                             </div>
-                            <div>
-                                
+                            <div className='flex'>
                                     <Link to='/findid'>
                                         <div className='font-medium text-sm text-blue-500 pr-5'>
                                             아이디 찾기
@@ -101,7 +106,7 @@ function Login() {
                             </div>
                         </div>
                         <div>
-                            <button type='submit' className='w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm'>로그인</button>
+                            <button type='submit' className='w-full py-2 px-4 bg-blue-600 hover:bg-blue-700 rounded-md text-white text-sm transition-duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>로그인</button>
                             <Link to='/register'>
                                 <button className='pt-4'>회원가입</button>
                             </Link>
