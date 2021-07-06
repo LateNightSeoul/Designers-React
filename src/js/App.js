@@ -46,7 +46,7 @@ function App() {
         <NavBar></NavBar>
         <div>
           <Switch>
-            <Route exact path='/' component={Main}></Route>
+            <Route exact path='/' component={ViewDesigner}></Route>
             <Route path='/reservation' component={ReservationList}></Route>
             <Route path='/ViewDesigner' component={ViewDesigner}></Route>
             <Route path='/like' component={LikeList}></Route>
