@@ -17,6 +17,8 @@ import FindId from './Component/member/FindId';
 import FindPw from './Component/member/findPw';
 import MyPage from './Component/member/MyPage';
 import user, { onLoginSuccess } from '../modules/user';
+import {useEffect} from 'react';
+import axios from 'axios';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,7 +38,7 @@ function App() {
         })
         .catch((res) => { console.log('Login needed');})
     }
-  })
+  }, [])
 
   return (
     <React.Fragment>
@@ -44,7 +46,7 @@ function App() {
         <NavBar></NavBar>
         <div>
           <Switch>
-            <Route exact path='/' component={Main}></Route>
+            <Route exact path='/' component={ViewDesigner}></Route>
             <Route path='/reservation' component={ReservationList}></Route>
             <Route path='/ViewDesigner' component={ViewDesigner}></Route>
             <Route path='/like' component={LikeList}></Route>

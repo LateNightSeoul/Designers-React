@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 function Description() {
     const [mockData, setMockData] = useState({
-        content: '<div>ㅎㅇ요</div><br/> <div>❤❤</div>'
+        content: '<div>ㅎㅇ요</div><br/> <div></div>'
     })
 
     return(
@@ -100,15 +100,24 @@ function ImageSlider() {
             <div className='px-40 pt-20 pb-12 text-2xl text-yellow-400'>
                 Desingers List
             </div>
-            {img.map((image) => {
-                if(image.id === imgNumber) {
-                    return <MainImage img_url={image.img_url}/>
-                }
-            })}
+            <div className='flex'>
+                {img.map((image) => {
+                    if(image.id === imgNumber) {
+                        return <MainImage img_url={image.img_url}/>
+                    }
+                })}
+            </div>
             <hr></hr>
-            {img.map((image, i) => <SubImage key={i} img_url={image.img_url}/>)}
-            <button onClick={onClickLeft}>left</button>
-            <button onClick={onClickRight}>right</button>
+            <div className='flex'>
+                {img.map((image, i) => <SubImage key={i} img_url={image.img_url}/>)}
+            </div>
+            <div className='space-x-4'>
+                <button onClick={onClickLeft}
+                        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>left</button>
+                <button onClick={onClickRight}
+                        className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'>right</button>
+            </div>
+            
         </div>
     )
 }
@@ -184,6 +193,36 @@ function ImageCard({}) {
                     <div className='px-6 py-4'>
                         <div className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2'>
                             #평양
+                        </div>
+                    </div>
+                </div>
+                <div className='max-w-sm rounded-2xl overflow-hidden shadow-lg transform scale-75'>
+                    <img src='https://source.unsplash.com/random' alt='' className='px-6 py-4'/>
+                    <div className='px-6 py-4'>
+                        <ul className='font-bold text-purple-500 text-xl'>
+                            <li>디자이너 : 아종영</li>
+                            <li>주소 : 서울시 서울상가 1층</li>
+                            <li>좋아요 : 300</li>
+                        </ul>
+                    </div>
+                    <div className='px-6 py-4'>
+                        <div className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2'>
+                            #서울
+                        </div>
+                    </div>
+                </div>
+                <div className='max-w-sm rounded-2xl overflow-hidden shadow-lg transform scale-75'>
+                    <img src='https://source.unsplash.com/random' alt='' className='px-6 py-4'/>
+                    <div className='px-6 py-4'>
+                        <ul className='font-bold text-purple-500 text-xl'>
+                            <li>디자이너 : 아종영</li>
+                            <li>주소 : 서울시 서울상가 1층</li>
+                            <li>좋아요 : 300</li>
+                        </ul>
+                    </div>
+                    <div className='px-6 py-4'>
+                        <div className='inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2'>
+                            #서울
                         </div>
                     </div>
                 </div>
