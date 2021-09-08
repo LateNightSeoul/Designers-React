@@ -21,10 +21,6 @@
 + React, Redux
 + Axios, Tailwind css
 
-#### Back-end
-+ Spring, Lombok, JUnit4
-+ JPA, MySQL, H2
-
 #### Etc
 + Docker
 
@@ -47,12 +43,6 @@
 <br/>
 <br/>
 
-# 기능 Overview 📃
+# 화면
 
-<br/>
-
-- 로그인, 회원가입, 마이페이지
-- 유저 세션 유지
-- 예약 관련 CRUD
-- 디자이너의 스케줄 확인, 고객 관리 CRUD
-- 좋아요 관련 CRUD
+![image](https://user-images.githubusercontent.com/60308568/132512938-6e01c976-7166-41f9-907e-adb53cbbccec.png)
